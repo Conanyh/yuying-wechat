@@ -1,0 +1,14 @@
+<!--pages/login/login.wxml-->
+<view class="container">
+  <image class="avs" src="/images/delete@3x.png"></image>
+  <view class="moto-container">
+    <view class="icon">
+      <image src="/images/wechat.png"></image>
+    </view>
+     <button class="btn" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" style="margin:0; padding:0;width:auto;">微信用户一键登录</button>
+    <!-- <text class="moto">微信用户一键登录</text> -->
+  </view>
+  <view class="tip">
+    <text>欢迎使用育英绩效，请通过您的微信号一键登录</text>
+  </view>
+</view>

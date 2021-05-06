@@ -1,0 +1,76 @@
+/* pages/login/phone/phone.wxss */
+.container{
+  display: flex;
+  flex-direction :column;
+  align-items: center;
+  }
+  .avs{
+  width:250rpx;
+  height: 250rpx;
+  margin-top:160rpx;
+  }
+  .username{
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-top: 200rpx;
+   
+  }
+  .moto-container{
+    width:520rpx;
+    height: 90rpx;
+    border-radius: 5px;
+    text-align: center;
+    margin-top: 40rpx;
+  }
+
+  .moto{
+    /* margin-left: 20rpx; */
+    font-size: 48rpx;
+    font-weight: bold;
+    color:  #111;
+    letter-spacing: 12rpx;
+  }
+
+  .phone-container{
+    width:520rpx;
+    height: 90rpx;
+    border-radius: 5px;
+    text-align: center;
+    margin-top: 100rpx;
+    background-color: #3B7EE5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .icon {
+    display: flex;
+    justify-content: center;
+  }
+
+  .phone-container .icon>image{
+    width: 44rpx;
+    height: 36rpx;
+    margin-right: 20rpx;
+  }
+
+  .phone{
+    margin-left: 20rpx;
+    font-size: 30rpx;
+    font-weight: bold;
+    color:  #FFF;
+  }
+
+  .btn{
+    background: none;
+    color: #fff;
+    font-size: 30rpx;
+    font-weight: bold;
+  }
+
+
+  page{
+    height: 100%;
+  /**全局背景色**/
+    background-color: #fff;
+  }

@@ -1,0 +1,175 @@
+<!--pages/main/main.wxml-->
+<view class='container'>
+	<view class='worklength'>
+		<view class="tab">
+			<view class='protab swiper-tab'>
+				<view class="swiper-tab-item {{currentTab==0 ? 'active' : ''}}" data-current="0" bindtap="swichNav">考核列表
+				</view>
+				<view class="swiper-tab-item {{currentTab==1 ? 'active' : ''}}" data-current="1" bindtap="swichNav">待评分考核</view>
+			</view>
+		</view>
+
+		<!-- <view class="work-itembox {{currentTab == 0 ? 'contentShow' : 'contentHidden'}}">
+			<view class="box">
+				<view class="content">
+					<view class="title">2021年3月全员业绩表现考核</view>
+					<view class="time">
+						<view class="time-icon">
+							<image src="/images/date.png"></image>
+						</view>
+						2021年3月28日
+					</view>
+					<view class="btn-icon">
+						<text class="icon-text-join">立即参与</text>
+					</view>
+				</view>
+			</view>
+			<view class="box">
+				<view class="content">
+					<view class="title">
+						<view class="title-icon">
+							<image src="/images/yiwanchengdefault.png"></image>
+						</view>
+						2021年3月全员业绩表现考核
+					</view>
+					<view class="time">
+						<view class="time-icon">
+							<image src="/images/date.png"></image>
+						</view>
+						2021年3月28日
+					</view>
+					<view class="btn-icon">
+						<text class="icon-text-detail">查看详情</text>
+					</view>
+				</view>
+			</view>
+			<view class="box">
+				<view class="content">
+					<view class="title">
+						<view class="title-icon">
+							<image src="/images/daipingfen.png"></image>
+						</view>
+						2021年3月全员业绩表现考核
+					</view>
+					<view class="time">
+						<view class="time-icon">
+							<image src="/images/date.png"></image>
+						</view>
+						2021年3月28日
+					</view>
+					<view class="btn-icon">
+						<text class="icon-text-detail">查看详情</text>
+					</view>
+				</view>
+			</view>
+		</view>
+
+		<view class="work-itembox {{currentTab == 1 ? 'contentShow' : 'contentHidden'}}">
+			<view class="box">
+				<view class="content">
+					<view class="title">
+						<view class="title-icon">
+							<image src="/images/daipingfen.png"></image>
+						</view>
+						2021年3月全员业绩表现考核
+					</view>
+					<view class="time">
+						<view class="time-icon">
+							<image src="/images/date.png"></image>
+						</view>
+						2021年3月28日
+					</view>
+					<view class="btn-icon">
+						<text class="icon-text-detail">查看详情</text>
+					</view>
+				</view>
+			</view>
+		</view> -->
+
+
+
+		<view class='work-itembox'>
+			<swiper current="{{currentTab}}" class="swiper-box" duration="300" bindchange="bindChange" style="height: {{clientHeight?clientHeight+'px':'auto'}}">
+				<swiper-item>
+					<!-- <scroll-view scroll-y="{{true}}" style="height: {{clientHeight?clientHeight+'px':'auto'}}"> -->
+						<view class="box">
+							<view class="content">
+								<view class="title">2021年3月全员业绩表现考核</view>
+								<view class="time">
+									<view class="time-icon">
+										<image src="/images/date@2x.png"></image>
+									</view>
+									2021年3月28日
+								</view>
+								<view class="btn-icon" bindtap="join">
+									<text class="icon-text-join">立即参与</text>
+								</view>
+							</view>
+						</view>
+						<view class="box">
+							<view class="content">
+								<view class="title">
+									<view class="title-icon">
+										<image src="/images/yiwanchengdefault@2x.png"></image>
+									</view>
+									2021年3月全员业绩表现考核
+								</view>
+								<view class="time">
+									<view class="time-icon">
+										<image src="/images/date@2x.png"></image>
+									</view>
+									2021年3月28日
+								</view>
+								<view class="btn-icon" bindtap="detail">
+									<text class="icon-text-detail">查看详情</text>
+								</view>
+							</view>
+						</view>
+						<view class="box">
+							<view class="content">
+								<view class="title">
+									<view class="title-icon">
+										<image src="/images/daipingfen@2x.png"></image>
+									</view>
+									2021年3月全员业绩表现考核
+								</view>
+								<view class="time">
+									<view class="time-icon">
+										<image src="/images/date@2x.png"></image>
+									</view>
+									2021年3月28日
+								</view>
+								<view class="btn-icon" bindtap="comment">
+									<text class="icon-text-detail">查看详情</text>
+								</view>
+							</view>
+						</view>
+					<!-- </scroll-view> -->
+				</swiper-item>
+				<swiper-item>
+					<!-- <scroll-view scroll-y="{{true}}" style="height: {{clientHeight?clientHeight+'px':'auto'}}"> -->
+						<view class="box">
+							<view class="content">
+								<view class="title">
+									<view class="title-icon">
+										<image src="/images/daipingfen@2x.png"></image>
+									</view>
+									2021年3月全员业绩表现考核
+								</view>
+								<view class="time">
+									<view class="time-icon">
+										<image src="/images/date@2x.png"></image>
+									</view>
+									2021年3月28日
+								</view>
+								<view class="btn-icon" bindtap="detail">
+									<text class="icon-text-detail">查看详情</text>
+								</view>
+							</view>
+						</view>
+					<!-- </scroll-view> -->
+				</swiper-item>
+			</swiper>
+		</view>
+	</view>
+</view>

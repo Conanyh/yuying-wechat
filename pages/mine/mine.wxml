@@ -1,0 +1,48 @@
+<!--pages/mine/mine.wxml-->
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<scroll-view scroll-y style="height: 100%;">
+	<view class="scroll-view-item" style='padding-top: {{height}}px; text-align:center; font-weight:bold; color: #fff'>菁英绩效</view>
+
+	<view class="user">
+		<view class="avatar">
+			<image src="/images/geren@3x.png"></image>
+		</view>
+		<view class="name">
+			<text>陈笑</text>
+		</view>
+		<view class="post">
+			<text>技术部 - 产品经理</text>
+		</view>
+	</view>
+
+	<view class="icons">
+		<view class="content">
+			<view class="libin">
+				<view class="item" bindtap="goToScore">
+					<view class="img">
+						<image src="/images/zonghepingfen@3x.png"></image>
+					</view>
+					<text>我的综合评分</text>
+				</view>
+				<view class="item" bindtap="goToInfo">
+					<view class="img">
+						<image src="/images/gerenziliao@3x.png"></image>
+					</view>
+					<text>个人资料</text>
+				</view>
+				<view class="item" bindtap="goToStaff">
+					<view class="img">
+						<image src="/images/yuangongliebiao@3x.png"></image>
+					</view>
+					<text>部门员工列表</text>
+				</view>
+				<view class="item" bindtap="goToRecord">
+					<view class="img">
+						<image src="/images/kaohejilu@3x.png"></image>
+					</view>
+					<text>员工考核记录</text>
+				</view>
+			</view>
+		</view>
+	</view>
+</scroll-view>

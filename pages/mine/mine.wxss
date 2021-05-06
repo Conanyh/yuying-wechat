@@ -1,0 +1,78 @@
+/* pages/mine/mine.wxss */
+page {
+  height: 100%;
+}
+
+.user {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.user .avatar {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  margin-top: 60rpx;
+}
+
+.user .avatar image {
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.user .name {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #fff;
+  margin: 8rpx 0;
+}
+
+.user .post {
+  font-size: 24rpx;
+  color: #fff;
+  margin-bottom: 20rpx;
+}
+
+.icons {
+  width: 100%;
+  background-color: #fff;
+  min-height: 500rpx;
+  border-top-left-radius: 50rpx;
+  border-top-right-radius: 50rpx;
+  z-index: 119;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  min-height: 400rpx;
+  padding: 10% 5%;
+}
+
+.libin {
+  display: grid;
+  width: 100%;
+  overflow-x: hidden;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 220rpx 220rpx;
+  grid-auto-rows: 220rpx;
+  grid-gap: 20rpx;
+}
+
+.item{
+  background-color: #F5F4F7;
+  color: #28282C;
+  font-size: 26rpx;
+  font-weight: bold;
+  padding: 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.item .img image{
+  width: 80rpx;
+  height: 80rpx;
+}

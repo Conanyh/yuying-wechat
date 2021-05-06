@@ -1,0 +1,416 @@
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<!-- <scroll-view scroll-y style="height: 100%;"> -->
+	<view class="scroll-view-item" style='padding-top: {{height}}px; text-align:center; font-weight:bold; color: #fff; margin:0 2%'>考核详情
+		<view style="float: left;" bindtap="goback">
+			<image src="/images/left-w.png" style="height:44rpx; width: 38rpx"></image>
+		</view>
+	</view>
+
+	<view class="title">
+		<text>2021年3月全员业绩表现考核</text>
+		<view><image src="/images/yiwancheng@2x.png"></image></view>
+	</view>
+
+	<view class="box">
+		<view class="user">
+			<view class="user-content">
+				<view class="user-left">
+					<view class="user-icon">
+						<text>姓名</text>
+					</view>
+					<text>陈笑</text>
+				</view>
+				<view class="user-right">
+					<view class="user-icon">
+						<text>部门</text>
+					</view>
+					<text>技术部</text>
+				</view>
+			</view>
+			<view class="user-content">
+				<view class="user-left">
+					<view class="user-icon">
+						<text>日期</text>
+					</view>
+					<text>2021年3月28日</text>
+				</view>
+				<view class="user-right">
+					<view class="user-icon">
+						<text>职位</text>
+					</view>
+					<text>产品经理</text>
+				</view>
+			</view>
+		</view>
+
+		<view class="tip">
+			<image src="/images/line@2x.png"></image>
+			<text class="font">工作态度与写作精神 </text>
+			<text class="score"> (20分)</text>
+		</view>
+
+		<view class="content">
+			<view class="single">
+				<view class="time">
+					<view class="time-content">
+						<view class="time-left">
+							<view class="time-icon">
+								<image src="/images/dot.png"></image>
+							</view>
+							<text class="time-left-tip">责任心</text><text class="time-left-score">(4分)</text>
+						</view>
+					</view>
+					<view class="time-content">
+						<view class="time-left">
+							<view class="time-icon">
+								<text class="time-icon-font">自评：</text>
+							</view>
+							<text class="time-icon-score">4分</text>
+						</view>
+						<view class="time-right">
+							<view class="time-icon">
+								<text class="time-icon-font">领导评：</text>
+							</view>
+							<view class="time-zone">
+								<!-- 减号 -->
+								<text class="{{minusStatus}}" bindtap="bindMinus">-</text>
+								<!-- 数值 -->
+								<input type="number" bindchange="bindManual" disabled="true" value="{{num}}" />
+								<!-- 加号 -->
+								<text class="normal" bindtap="bindPlus">+</text>
+							</view>
+						</view>
+					</view>
+				</view>
+			</view>
+			<view class="single-line"></view>
+			<view class="single">
+				<view class="time">
+					<view class="time-content">
+						<view class="time-left">
+							<view class="time-icon">
+								<image src="/images/dot.png"></image>
+							</view>
+							<text class="time-left-tip">责任心</text><text class="time-left-score">(4分)</text>
+						</view>
+					</view>
+					<view class="time-content">
+						<view class="time-left">
+							<view class="time-icon">
+								<text class="time-icon-font">自评：</text>
+							</view>
+							<text class="time-icon-score">4分</text>
+						</view>
+						<view class="time-right">
+							<view class="time-icon">
+								<text class="time-icon-font">领导评：</text>
+							</view>
+							<view class="time-zone">
+								<!-- 减号 -->
+								<text class="{{minusStatus}}" bindtap="bindMinus">-</text>
+								<!-- 数值 -->
+								<input type="number" bindchange="bindManual" disabled="true" value="{{num}}" />
+								<!-- 加号 -->
+								<text class="normal" bindtap="bindPlus">+</text>
+							</view>
+						</view>
+					</view>
+				</view>
+			</view>
+			<view class="single-line"></view>
+			<view class="single">
+				<view class="time">
+					<view class="time-content">
+						<view class="time-left">
+							<view class="time-icon">
+								<image src="/images/dot.png"></image>
+							</view>
+							<text class="time-left-tip">责任心</text><text class="time-left-score">(4分)</text>
+						</view>
+					</view>
+					<view class="time-content">
+						<view class="time-left">
+							<view class="time-icon">
+								<text class="time-icon-font">自评：</text>
+							</view>
+							<text class="time-icon-score">4分</text>
+						</view>
+						<view class="time-right">
+							<view class="time-icon">
+								<text class="time-icon-font">领导评：</text>
+							</view>
+							<view class="time-zone">
+								<!-- 减号 -->
+								<text class="{{minusStatus}}" bindtap="bindMinus">-</text>
+								<!-- 数值 -->
+								<input type="number" bindchange="bindManual" disabled="true" value="{{num}}" />
+								<!-- 加号 -->
+								<text class="normal" bindtap="bindPlus">+</text>
+							</view>
+						</view>
+					</view>
+				</view>
+			</view>
+			<view class="single-line"></view>
+			<view class="single">
+				<view class="time">
+					<view class="time-content">
+						<view class="time-left">
+							<view class="time-icon">
+								<image src="/images/dot.png"></image>
+							</view>
+							<text class="time-left-tip">责任心</text><text class="time-left-score">(4分)</text>
+						</view>
+					</view>
+					<view class="time-content">
+						<view class="time-left">
+							<view class="time-icon">
+								<text class="time-icon-font">自评：</text>
+							</view>
+							<text class="time-icon-score">4分</text>
+						</view>
+						<view class="time-right">
+							<view class="time-icon">
+								<text class="time-icon-font">领导评：</text>
+							</view>
+							<view class="time-zone">
+								<!-- 减号 -->
+								<text class="{{minusStatus}}" bindtap="bindMinus">-</text>
+								<!-- 数值 -->
+								<input type="number" bindchange="bindManual" disabled="true" value="{{num}}" />
+								<!-- 加号 -->
+								<text class="normal" bindtap="bindPlus">+</text>
+							</view>
+						</view>
+					</view>
+				</view>
+			</view>
+			<view class="single-line"></view>
+			<view class="single">
+				<view class="time">
+					<view class="time-content">
+						<view class="time-left">
+							<view class="time-icon">
+								<image src="/images/dot.png"></image>
+							</view>
+							<text class="time-left-tip">责任心</text><text class="time-left-score">(4分)</text>
+						</view>
+					</view>
+					<view class="time-content">
+						<view class="time-left">
+							<view class="time-icon">
+								<text class="time-icon-font">自评：</text>
+							</view>
+							<text class="time-icon-score">4分</text>
+						</view>
+						<view class="time-right">
+							<view class="time-icon">
+								<text class="time-icon-font">领导评：</text>
+							</view>
+							<view class="time-zone">
+								<!-- 减号 -->
+								<text class="{{minusStatus}}" bindtap="bindMinus">-</text>
+								<!-- 数值 -->
+								<input type="number" bindchange="bindManual" disabled="true" value="{{num}}" />
+								<!-- 加号 -->
+								<text class="normal" bindtap="bindPlus">+</text>
+							</view>
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+
+		<view class="tip">
+			<image src="/images/line@2x.png"></image>
+			<text class="font">工作能力与业绩 </text>
+			<text class="score"> (80分)</text>
+		</view>
+
+		<view class="content">
+			<view class="single">
+				<view class="time">
+					<view class="time-content">
+						<view class="time-left">
+							<view class="time-icon">
+								<image src="/images/dot.png"></image>
+							</view>
+							<text class="time-left-tip">责任心</text><text class="time-left-score">(4分)</text>
+						</view>
+					</view>
+					<view class="time-content">
+						<view class="time-left">
+							<view class="time-icon">
+								<text class="time-icon-font">自评：</text>
+							</view>
+							<text class="time-icon-score">4分</text>
+						</view>
+						<view class="time-right">
+							<view class="time-icon">
+								<text class="time-icon-font">领导评：</text>
+							</view>
+							<view class="time-zone">
+								<!-- 减号 -->
+								<text class="{{minusStatus}}" bindtap="bindMinus">-</text>
+								<!-- 数值 -->
+								<input type="number" bindchange="bindManual" disabled="true" value="{{num}}" />
+								<!-- 加号 -->
+								<text class="normal" bindtap="bindPlus">+</text>
+							</view>
+						</view>
+					</view>
+				</view>
+			</view>
+			<view class="single-line"></view>
+			<view class="single">
+				<view class="time">
+					<view class="time-content">
+						<view class="time-left">
+							<view class="time-icon">
+								<image src="/images/dot.png"></image>
+							</view>
+							<text class="time-left-tip">责任心</text><text class="time-left-score">(4分)</text>
+						</view>
+					</view>
+					<view class="time-content">
+						<view class="time-left">
+							<view class="time-icon">
+								<text class="time-icon-font">自评：</text>
+							</view>
+							<text class="time-icon-score">4分</text>
+						</view>
+						<view class="time-right">
+							<view class="time-icon">
+								<text class="time-icon-font">领导评：</text>
+							</view>
+							<view class="time-zone">
+								<!-- 减号 -->
+								<text class="{{minusStatus}}" bindtap="bindMinus">-</text>
+								<!-- 数值 -->
+								<input type="number" bindchange="bindManual" disabled="true" value="{{num}}" />
+								<!-- 加号 -->
+								<text class="normal" bindtap="bindPlus">+</text>
+							</view>
+						</view>
+					</view>
+				</view>
+			</view>
+			<view class="single-line"></view>
+			<view class="single">
+				<view class="time">
+					<view class="time-content">
+						<view class="time-left">
+							<view class="time-icon">
+								<image src="/images/dot.png"></image>
+							</view>
+							<text class="time-left-tip">责任心</text><text class="time-left-score">(4分)</text>
+						</view>
+					</view>
+					<view class="time-content">
+						<view class="time-left">
+							<view class="time-icon">
+								<text class="time-icon-font">自评：</text>
+							</view>
+							<text class="time-icon-score">4分</text>
+						</view>
+						<view class="time-right">
+							<view class="time-icon">
+								<text class="time-icon-font">领导评：</text>
+							</view>
+							<view class="time-zone">
+								<!-- 减号 -->
+								<text class="{{minusStatus}}" bindtap="bindMinus">-</text>
+								<!-- 数值 -->
+								<input type="number" bindchange="bindManual" disabled="true" value="{{num}}" />
+								<!-- 加号 -->
+								<text class="normal" bindtap="bindPlus">+</text>
+							</view>
+						</view>
+					</view>
+				</view>
+			</view>
+			<view class="single-line"></view>
+			<view class="single">
+				<view class="time">
+					<view class="time-content">
+						<view class="time-left">
+							<view class="time-icon">
+								<image src="/images/dot.png"></image>
+							</view>
+							<text class="time-left-tip">责任心</text><text class="time-left-score">(4分)</text>
+						</view>
+					</view>
+					<view class="time-content">
+						<view class="time-left">
+							<view class="time-icon">
+								<text class="time-icon-font">自评：</text>
+							</view>
+							<text class="time-icon-score">4分</text>
+						</view>
+						<view class="time-right">
+							<view class="time-icon">
+								<text class="time-icon-font">领导评：</text>
+							</view>
+							<view class="time-zone">
+								<!-- 减号 -->
+								<text class="{{minusStatus}}" bindtap="bindMinus">-</text>
+								<!-- 数值 -->
+								<input type="number" bindchange="bindManual" disabled="true" value="{{num}}" />
+								<!-- 加号 -->
+								<text class="normal" bindtap="bindPlus">+</text>
+							</view>
+						</view>
+					</view>
+				</view>
+			</view>
+			<view class="single-line"></view>
+			<view class="single">
+				<view class="time">
+					<view class="time-content">
+						<view class="time-left">
+							<view class="time-icon">
+								<image src="/images/dot.png"></image>
+							</view>
+							<text class="time-left-tip">责任心</text><text class="time-left-score">(4分)</text>
+						</view>
+					</view>
+					<view class="time-content">
+						<view class="time-left">
+							<view class="time-icon">
+								<text class="time-icon-font">自评：</text>
+							</view>
+							<text class="time-icon-score">4分</text>
+						</view>
+						<view class="time-right">
+							<view class="time-icon">
+								<text class="time-icon-font">领导评：</text>
+							</view>
+							<view class="time-zone">
+								<!-- 减号 -->
+								<text class="{{minusStatus}}" bindtap="bindMinus">-</text>
+								<!-- 数值 -->
+								<input type="number" bindchange="bindManual" disabled="true" value="{{num}}" />
+								<!-- 加号 -->
+								<text class="normal" bindtap="bindPlus">+</text>
+							</view>
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+
+		<view class="tip">
+			<image src="/images/line@2x.png"></image>
+			<text class="font">领导评语 </text>
+		</view>
+		<view class="textarea">
+			<textarea placeholder="请输入您的评价" placeholder-class="textaea-placeholder" auto-height></textarea>
+		</view>
+
+		<!-- <view class="bottom">
+			<button class="save-btn" form-type="submit">提交考核</button>
+		</view> -->
+
+	</view>
+
+<!-- </scroll-view> -->

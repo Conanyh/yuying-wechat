@@ -1,0 +1,45 @@
+{
+  "pages":[
+    "pages/main/main",
+    "pages/mine/mine",
+    "pages/login/login",
+    "pages/login/phone/phone",
+    "pages/info/info",
+    "pages/detail/detail",
+    "pages/join/join",
+    "pages/comment/comment",
+    "pages/staff/staff",
+    "pages/score/score",
+    "pages/record/record",
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/jia/jia"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "菁英绩效",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+     "list": [
+      {
+        "pagePath": "pages/main/main",
+        "text": "首页",
+        "iconPath": "images/home@2x.png",
+        "selectedIconPath": "images/home xuanzhong@2x.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "images/geren@2x.png",
+        "selectedIconPath": "images/geren xuanzhong@2x.png"
+      }
+    ],
+    "backgroundColor": "#f8f8f8",
+    "color": "#999",
+    "selectedColor": "#3B7EE5"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

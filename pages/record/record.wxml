@@ -1,0 +1,152 @@
+<!--pages/record/record.wxml-->
+<view class='container'>
+	<view class='worklength'>
+		<view class="tab">
+			<view class='protab swiper-tab'>
+				<view class="swiper-tab-item {{currentTab==0 ? 'active' : ''}}" data-current="0" bindtap="swichNav">已完成</view>
+				<view class="swiper-tab-item {{currentTab==1 ? 'active' : ''}}" data-current="1" bindtap="swichNav">待点评</view>
+			</view>
+		</view>
+
+
+		<view class='work-itembox'>
+			<swiper current="{{currentTab}}" class="swiper-box" duration="300" bindchange="bindChange" style="height: {{clientHeight?clientHeight+'px':'auto'}}">
+				<swiper-item>
+					<view class="box">
+						<view class="content">
+							<view class="title">
+								<view class="title-icon">
+									<image src="/images/yiwanchengdefault@2x.png"></image>
+								</view>
+								2021年3月全员业绩表现考核
+							</view>
+							<view class="box-line"></view>
+							<view class="time">
+								<view class="time-content">
+									<view class="time-left">
+										<view class="time-icon">
+											<image src="/images/name@2x.png"></image>
+										</view>
+										陈笑
+									</view>
+									<view class="time-right">
+										<view class="time-icon">
+											<image src="/images/date@2x.png"></image>
+										</view>
+										2021年2月27日
+									</view>
+								</view>
+								<view class="time-content">
+									<view class="time-left">
+										<view class="time-icon">
+											<image src="/images/bumen@2x.png"></image>
+										</view>
+										技术部
+									</view>
+									<view class="time-right">
+										<view class="time-icon">
+											<image src="/images/zhiwei@2x.png"></image>
+										</view>
+										产品经理
+									</view>
+								</view>
+							</view>
+							<view class="btn-icon" bindtap="detail">
+								<text class="icon-text-detail">查看详情</text>
+							</view>
+						</view>
+					</view>
+					<view class="box">
+						<view class="content">
+							<view class="title">
+								<view class="title-icon">
+									<image src="/images/daipingfen@2x.png"></image>
+								</view>
+								2021年3月全员业绩表现考核
+							</view>
+							<view class="box-line"></view>
+							<view class="time">
+								<view class="time-content">
+									<view class="time-left">
+										<view class="time-icon">
+											<image src="/images/name@2x.png"></image>
+										</view>
+										陈笑
+									</view>
+									<view class="time-right">
+										<view class="time-icon">
+											<image src="/images/date@2x.png"></image>
+										</view>
+										2021年2月27日
+									</view>
+								</view>
+								<view class="time-content">
+									<view class="time-left">
+										<view class="time-icon">
+											<image src="/images/bumen@2x.png"></image>
+										</view>
+										技术部
+									</view>
+									<view class="time-right">
+										<view class="time-icon">
+											<image src="/images/zhiwei@2x.png"></image>
+										</view>
+										产品经理
+									</view>
+								</view>
+							</view>
+							<view class="btn-icon" bindtap="comment">
+								<text class="icon-text-join">去点评</text>
+							</view>
+						</view>
+					</view>
+				</swiper-item>
+				<swiper-item>
+					<view class="box">
+						<view class="content">
+							<view class="title">
+								<view class="title-icon">
+									<image src="/images/daipingfen@2x.png"></image>
+								</view>
+								2021年3月全员业绩表现考核
+							</view>
+							<view class="time">
+								<view class="time-content">
+									<view class="time-left">
+										<view class="time-icon">
+											<image src="/images/name@2x.png"></image>
+										</view>
+										陈笑
+									</view>
+									<view class="time-right">
+										<view class="time-icon">
+											<image src="/images/date@2x.png"></image>
+										</view>
+										2021年2月27日
+									</view>
+								</view>
+								<view class="time-content">
+									<view class="time-left">
+										<view class="time-icon">
+											<image src="/images/bumen@2x.png"></image>
+										</view>
+										技术部
+									</view>
+									<view class="time-right">
+										<view class="time-icon">
+											<image src="/images/zhiwei@2x.png"></image>
+										</view>
+										产品经理
+									</view>
+								</view>
+							</view>
+							<view class="btn-icon" bindtap="comment">
+								<text class="icon-text-join">去点评</text>
+							</view>
+						</view>
+					</view>
+				</swiper-item>
+			</swiper>
+		</view>
+	</view>
+</view>

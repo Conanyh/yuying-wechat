@@ -1,0 +1,171 @@
+/* pages/record/record.wxss */
+page {
+  background: #F5F5F5;
+}
+
+::-webkit-scrollbar{
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
+.container{
+  width: 100%;
+  height: 100%;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+.swiper-box {
+  width: 100%;
+}
+.worklength{width:100%}
+.work-itembox {
+  width: 100%;
+  margin-top: 80rpx;
+  overflow-y: hidden;
+}
+
+.tab {
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  height: 100rpx;
+  overflow-y: hidden;
+}
+
+.swiper-tab {
+  width: 100%;
+  display: -webkit-flex;
+  display: flex;
+
+  background: #fff;
+}
+
+.swiper-tab .swiper-tab-item {
+  -webkit-box-flex: 1;
+  flex: 1;
+  text-align: center;
+  line-height: 80rpx;
+  font-size: 30rpx;
+  position:relative;
+  color: #999;
+}
+
+.swiper-tab  .active {
+  color: #28282C;
+  font-weight: bold;
+}
+.swiper-tab  .active::after{
+  display:block;
+  content:'';
+  left: 42%;
+  bottom: 10rpx;
+  width:16%;
+  height:4rpx;
+  background:#3B7EE5;
+  position:absolute;
+}
+
+.contentShow{
+  display: block;
+}
+
+.contentHidden{
+  display: none;
+}
+
+/* 第一页页面内容 */
+
+.box{
+  margin: 20rpx 30rpx;
+  background-color: #fff;
+  border-radius: 3rpx;
+}
+
+.content{
+  padding: 20rpx 30rpx;
+}
+
+.content .title{
+  font-size: 28rpx;
+  color: #28282C;
+  font-weight: bold;
+  height: 80rpx;
+  line-height: 80rpx;
+  display: flex;
+}
+
+.content .title .title-icon{
+  display: row;
+  justify-content: center;
+}
+
+.content .title .title-icon image{
+  width: 73rpx;
+  height: 24rpx;
+  margin-right: 12rpx;
+}
+
+.content .box-line {
+  border: 1px solid rgba(225, 225, 225, 0.1);
+  margin: 6rpx 0;
+}
+
+.content .time{
+  font-size: 26rpx;
+  color: #28282C;
+  line-height: 54rpx;
+}
+
+.content .time .time-content {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+}
+
+.content .time .time-left{
+  display: flex;
+  width: 50%;
+}
+
+.content .time .time-right{
+  display: flex;
+  width: 50%;
+}
+
+.content .time .time-icon{
+  display: row;
+  justify-content: center;
+}
+
+.content .time .time-icon image{
+  width: 24rpx;
+  height: 24rpx;
+  margin-right: 12rpx;
+}
+
+.content .btn-icon{
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.content .btn-icon .icon-text-join{
+  border: 0rpx solid #3B7EE5;
+  font-size: 24rpx;
+  color: #fff;
+  padding: 4rpx 16rpx;
+  border-radius: 10rpx;
+  background-color: #3B7EE5;
+}
+
+.content .btn-icon .icon-text-detail{
+  border: 1rpx solid #3B7EE5;
+  font-size: 24rpx;
+  color: #3B7EE5;
+  padding: 4rpx 16rpx;
+  border-radius: 10rpx;
+}

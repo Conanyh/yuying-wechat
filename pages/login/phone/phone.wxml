@@ -1,0 +1,14 @@
+<!--pages/login/phone/phone.wxml-->
+<view class="container">
+  <image class="avs" src="/images/delete@3x.png"></image>
+  <view class="moto-container">
+    <text class="moto">菁英绩效</text>
+  </view>
+  <view class="phone-container">
+    <view class="icon">
+      <image src="/images/wechat.png"></image>
+    </view>
+    <!-- <text class="phone" >手机号认证</text> -->
+    <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" class="btn" style="margin:0; padding:0;width:auto;">手机号认证</button>
+  </view>
+</view>

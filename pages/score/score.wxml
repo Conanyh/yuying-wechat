@@ -1,0 +1,55 @@
+<!--pages/score/score.wxml-->
+<view class='container'>
+	<view class='worklength'>
+		<view class='work-itembox'>
+			<view class="box">
+				<view class="content">
+					<view class="title">
+						2021年3月全员业绩表现考核
+					</view>
+					<view class="time">
+						<view class="time-left">
+							<view class="time-icon">
+								<image src="/images/date@2x.png"></image>
+							</view>
+							2021年3月28日
+						</view>
+						<view class="time-right">
+							<view class="time-icon">
+								<image src="/images/pingjunfen@2x.png"></image>
+							</view>
+							平均分8分
+						</view>
+					</view>
+					<view class="btn-icon" bindtap="detail">
+						<text class="icon-text-detail">查看详情</text>
+					</view>
+				</view>
+			</view>
+			<view class="box">
+				<view class="content">
+					<view class="title">
+						2021年2月全员业绩表现考核
+					</view>
+					<view class="time">
+						<view class="time-left">
+							<view class="time-icon">
+								<image src="/images/date@2x.png"></image>
+							</view>
+							2021年2月27日
+						</view>
+						<view class="time-right">
+							<view class="time-icon">
+								<image src="/images/pingjunfen@2x.png"></image>
+							</view>
+							平均分9分
+						</view>
+					</view>
+					<view class="btn-icon" bindtap="detail">
+						<text class="icon-text-detail">查看详情</text>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>
