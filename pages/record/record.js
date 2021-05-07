@@ -93,9 +93,11 @@ Page({
 
   },
 
-  detail: function() {
+  detail(e) {
+    console.log(e)
+    let id = e.currentTarget.dataset.id
     wx.navigateTo({
-      url: '/pages/detail/detail',
+      url: '/pages/check-detail/check-detail?id=' + id,
     })
   },
 
@@ -118,6 +120,6 @@ Page({
         checkList: res.data
       })
     })
-  }
+  },
 
 })

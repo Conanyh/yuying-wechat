@@ -51,7 +51,7 @@
 									</view>
 								</view>
 							</view>
-							<view class="btn-icon" bindtap="detail">
+							<view class="btn-icon" catchtap="detail" data-id="{{ item.id }}">
 								<text class="icon-text-detail">查看详情</text>
 							</view>
 						</view>
