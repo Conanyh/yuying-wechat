@@ -67,11 +67,11 @@
 							</view>
 							<view class="time-zone">
 								<!-- 减号 -->
-								<text class="{{minusStatus}}" bindtap="bindMinus">-</text>
+								<text class="{{minusStatus}}" data-index="1" bindtap="bindMinus">-</text>
 								<!-- 数值 -->
-								<input type="number" bindchange="bindManual" disabled="true" value="{{num}}" />
+								<input type="number" data-index="1" bindchange="bindManual" disabled="true" value="{{num}}" />
 								<!-- 加号 -->
-								<text class="normal" bindtap="bindPlus">+</text>
+								<text class="normal" data-index="1" bindtap="bindPlus">+</text>
 							</view>
 						</view>
 						<view class="time-right">
@@ -108,11 +108,11 @@
 							</view>
 							<view class="time-zone">
 								<!-- 减号 -->
-								<text class="{{minusStatus}}" bindtap="bindMinus">-</text>
+								<text class="{{minusStatus}}" data-index="2" bindtap="bindMinus">-</text>
 								<!-- 数值 -->
-								<input type="number" bindchange="bindManual" disabled="true" value="{{num}}" />
+								<input type="number" data-index="2" bindchange="bindManual" disabled="true" value="{{num}}" />
 								<!-- 加号 -->
-								<text class="normal" bindtap="bindPlus">+</text>
+								<text class="normal" data-index="2" bindtap="bindPlus">+</text>
 							</view>
 							<!-- <text class="time-icon-score">4分</text> -->
 						</view>

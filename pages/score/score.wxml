@@ -6,20 +6,20 @@
 				<view class="box">
 					<view class="content">
 						<view class="title">
-							2021年3月全员业绩表现考核
+							{{item.check.name}}
 						</view>
 						<view class="time">
 							<view class="time-left">
 								<view class="time-icon">
 									<image src="/images/date@2x.png"></image>
 								</view>
-								2021年3月28日
+								{{item.check.created_at_text}}
 							</view>
 							<view class="time-right">
 								<view class="time-icon">
 									<image src="/images/pingjunfen@2x.png"></image>
 								</view>
-								平均分8分
+								平均分{{item.average_score}}分
 							</view>
 						</view>
 						<view class="btn-icon" bindtap="detail">

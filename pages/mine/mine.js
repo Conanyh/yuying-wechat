@@ -14,7 +14,11 @@ Page({
     },
     // 导航头的高度
     height: 0,
-    userInfo: []
+    userInfos: [],
+    user: {
+      avatarUrl: "",
+      nickName: ""
+    }
   },
 
   /**
@@ -30,6 +34,18 @@ Page({
           height: result.statusBarHeight + 10
         })
       },
+    })
+
+    wx.getUserInfo({
+      success: function (res) {
+        console.log(res)
+        var avatarUrl = 'user.avatarUrl';
+        var nickName = 'user.nickName';
+        that.setData({
+            [avatarUrl]: res.userInfo.avatarUrl,
+            [nickName]:res.userInfo.nickName,
+        })
+      }
     })
 
     that.getUserInfo(); // 获取用户信息
