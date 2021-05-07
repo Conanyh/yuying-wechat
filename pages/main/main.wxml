@@ -92,81 +92,83 @@
 			<swiper current="{{currentTab}}" class="swiper-box" duration="300" bindchange="bindChange" style="height: {{clientHeight?clientHeight+'px':'auto'}}">
 				<swiper-item>
 					<!-- <scroll-view scroll-y="{{true}}" style="height: {{clientHeight?clientHeight+'px':'auto'}}"> -->
-						<view class="box">
-							<view class="content">
-								<view class="title">2021年3月全员业绩表现考核</view>
-								<view class="time">
-									<view class="time-icon">
-										<image src="/images/date@2x.png"></image>
-									</view>
-									2021年3月28日
+					<view class="box">
+						<view class="content">
+							<view class="title">2021年3月全员业绩表现考核</view>
+							<view class="time">
+								<view class="time-icon">
+									<image src="/images/date@2x.png"></image>
 								</view>
-								<view class="btn-icon" bindtap="join">
-									<text class="icon-text-join">立即参与</text>
-								</view>
+								2021年3月28日
+							</view>
+							<view class="btn-icon" bindtap="join">
+								<text class="icon-text-join">立即参与</text>
 							</view>
 						</view>
-						<view class="box">
-							<view class="content">
-								<view class="title">
-									<view class="title-icon">
-										<image src="/images/yiwanchengdefault@2x.png"></image>
-									</view>
-									2021年3月全员业绩表现考核
+					</view>
+					<view class="box">
+						<view class="content">
+							<view class="title">
+								<view class="title-icon">
+									<image src="/images/yiwanchengdefault@2x.png"></image>
 								</view>
-								<view class="time">
-									<view class="time-icon">
-										<image src="/images/date@2x.png"></image>
-									</view>
-									2021年3月28日
+								2021年3月全员业绩表现考核
+							</view>
+							<view class="time">
+								<view class="time-icon">
+									<image src="/images/date@2x.png"></image>
 								</view>
-								<view class="btn-icon" bindtap="detail">
-									<text class="icon-text-detail">查看详情</text>
-								</view>
+								2021年3月28日
+							</view>
+							<view class="btn-icon" bindtap="detail">
+								<text class="icon-text-detail">查看详情</text>
 							</view>
 						</view>
+					</view>
+					<view class="box">
+						<view class="content">
+							<view class="title">
+								<view class="title-icon">
+									<image src="/images/daipingfen@2x.png"></image>
+								</view>
+								2021年3月全员业绩表现考核
+							</view>
+							<view class="time">
+								<view class="time-icon">
+									<image src="/images/date@2x.png"></image>
+								</view>
+								2021年3月28日
+							</view>
+							<view class="btn-icon" bindtap="comment">
+								<text class="icon-text-detail">查看详情</text>
+							</view>
+						</view>
+					</view>
+					<!-- </scroll-view> -->
+				</swiper-item>
+				<swiper-item>
+					<!-- <scroll-view scroll-y="{{true}}" style="height: {{clientHeight?clientHeight+'px':'auto'}}"> -->
+					<block wx:for="{{worklist}}" wx:key="index">
 						<view class="box">
 							<view class="content">
 								<view class="title">
 									<view class="title-icon">
 										<image src="/images/daipingfen@2x.png"></image>
 									</view>
-									2021年3月全员业绩表现考核
+									{{item.name}}
 								</view>
 								<view class="time">
 									<view class="time-icon">
 										<image src="/images/date@2x.png"></image>
 									</view>
-									2021年3月28日
+									{{item.created_at}}
 								</view>
 								<view class="btn-icon" bindtap="comment">
 									<text class="icon-text-detail">查看详情</text>
 								</view>
 							</view>
 						</view>
-					<!-- </scroll-view> -->
-				</swiper-item>
-				<swiper-item>
-					<!-- <scroll-view scroll-y="{{true}}" style="height: {{clientHeight?clientHeight+'px':'auto'}}"> -->
-						<view class="box">
-							<view class="content">
-								<view class="title">
-									<view class="title-icon">
-										<image src="/images/daipingfen@2x.png"></image>
-									</view>
-									2021年3月全员业绩表现考核
-								</view>
-								<view class="time">
-									<view class="time-icon">
-										<image src="/images/date@2x.png"></image>
-									</view>
-									2021年3月28日
-								</view>
-								<view class="btn-icon" bindtap="detail">
-									<text class="icon-text-detail">查看详情</text>
-								</view>
-							</view>
-						</view>
+					</block>
 					<!-- </scroll-view> -->
 				</swiper-item>
 			</swiper>

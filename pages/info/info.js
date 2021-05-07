@@ -9,23 +9,36 @@ Page({
   data: {
     sex: ['男', '女'],
     gender: 0,
-    ageArr: ['20', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '35', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50'],
+    ageArr: ['20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '35', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50'],
     age: 0,
+    age_name: '',
     name: '',
     phone: '',
     department_index: 0,
     department: [],
     department_id: '',
+    department_name: '',
     post_index: 0,
     post: [],
-    post_id: ''
+    post_id: '',
+    post_name: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
+    console.log(options)
     var that = this;
+
+    that.setData({
+      name: options.name,
+      phone: options.phone,
+      age_name: options.age,
+      department_name: options.department_name,
+      post_name: options.post_name,
+    })
 
     that.initValidate(); // 表单验证
 
@@ -80,14 +93,17 @@ Page({
   bindPickerChangeAge: function (e) {
     var that = this;
     that.setData({
-      age: e.detail.value
+      age: e.detail.value,
+      age_name: that.data.ageArr[e.detail.value]
     })
   },
 
   bindPickerChangeDepartment: function (e) {
+    console.log(e.detail.value)
     var that = this;
     that.setData({
-      department_index: e.detail.value
+      department_index: e.detail.value,
+      department_name: that.data.department[e.detail.value].name
     })
   },
 
@@ -95,7 +111,8 @@ Page({
     console.log(e)
     var that = this;
     that.setData({
-      post_index: e.detail.value
+      post_index: e.detail.value,
+      post_name: that.data.post[e.detail.value].name
     })
   },
 
@@ -215,7 +232,15 @@ Page({
       success: function (res) {
         console.log(res)
         if (res.data.code) {
-
+          wx.showToast({
+            title: res.data.msg,
+            icon: 'none'
+          })
+          setTimeout(function() {
+            wx.switchTab({
+              url: '/pages/mine/mine',
+            })
+          }, 2000)
         }
       }
     })

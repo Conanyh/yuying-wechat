@@ -1,6 +1,6 @@
 // pages/mine/mine.js
 import { http } from "../../utils/request";
-import { pageTo } from "../../utils/common";
+import { pageTo, tips } from "../../utils/common";
 
 const app = getApp()
 Page({
@@ -16,7 +16,8 @@ Page({
       address: '../../images/bg@3x.png' // 加个背景 不加就是没有
     },
     // 导航头的高度
-    height: 0
+    height: 0,
+    userInfo: []
   },
 
   /**
@@ -34,7 +35,7 @@ Page({
       },
     })
 
-    that.getUserInfo(); // 获取用户信息
+    // that.getUserInfo(); // 获取用户信息
   },
 
   /**
@@ -48,7 +49,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    var that = this;
 
+    that.getUserInfo();
   },
 
   /**
@@ -90,8 +93,15 @@ Page({
    * 跳转个人资料
    */
   goToInfo: function () {
+    var that = this;
+    var name = that.data.userInfo.realname;
+    var phone = that.data.userInfo.mobile;
+    var gender = that.data.userInfo.gender;
+    var age = that.data.userInfo.age;
+    var department_name = that.data.userInfo.department.name;
+    var post_name = that.data.userInfo.departmentposition.name;
     wx.navigateTo({
-      url: '/pages/info/info',
+      url: '/pages/info/info?name='+name+'&phone='+phone+'&gender='+gender+'&age='+age+'&department_name='+department_name+'&post_name='+post_name,
     })
   },
 
@@ -128,6 +138,9 @@ Page({
     if (openid) {
       http.GET('user/getUserInfo', {openid}).then(res => {
         console.log(res)
+        if (res.data) {
+          wx.setStorageSync('userInfo', res.data)
+        }
       })
     } else {
       pageTo('/pages/login/login')
