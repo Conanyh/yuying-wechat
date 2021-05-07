@@ -1,11 +1,12 @@
 // pages/score/score.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    list: {}
   },
 
   /**
@@ -26,7 +27,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var that = this;
+    that.getScore()
   },
 
   /**
@@ -67,6 +69,30 @@ Page({
   detail: function () {
     wx.navigateTo({
       url: '/pages/detail/detail',
+    })
+  },
+
+  getScore: function () {
+    var that = this;
+    var openid = wx.getStorageSync('openid');
+    console.log(openid)
+    wx.request({
+      url: app.globalData.host + '/user/getMyGrade',
+      data: {
+        openid: openid
+      },
+      method: "GET",
+      header: {
+        "Content-Type": "application/json"
+      },
+      success: function (res) {
+        console.log(res)
+        if (res.data.code) {
+          that.setData({
+            list: res.data.data
+          })
+        }
+      }
     })
   }
 })

@@ -31,7 +31,8 @@
 				<view class="left">年龄</view>
 				<picker range="{{ageArr}}" bindchange="bindPickerChangeAge">
 					<view class="select-box">
-						<input class="right-input" disabled="{{true}}" name="age" value="{{ageArr[age]}}" placeholder="请选择年龄" placeholder-class="input-placeholder" />
+						<!-- <input class="right-input" disabled="{{true}}" name="age" value="{{ageArr[age]}}" placeholder="请选择年龄" placeholder-class="input-placeholder" /> -->
+						<input class="right-input" disabled="{{true}}" name="age" value="{{age_name}}" placeholder="请选择年龄" placeholder-class="input-placeholder" />
 						<view class="info_more">
 							<image class="more" src="/images/xiala@2x.png" />
 						</view>
@@ -42,7 +43,8 @@
 				<view class="left">部门</view>
 				<picker range="{{department}}" range-key="name" value="{{department[department_index].id}}" bindchange="bindPickerChangeDepartment">
 					<view class="select-box">
-						<input class="right-input" disabled="{{true}}" name="department_id" value="{{department[department_index].name}}" placeholder="请选择部门" placeholder-class="input-placeholder" />
+						<!-- <input class="right-input" disabled="{{true}}" name="department_id" value="{{department[department_index].name}}" placeholder="请选择部门" placeholder-class="input-placeholder" /> -->
+						<input class="right-input" disabled="{{true}}" name="department_id" value="{{department_name}}" placeholder="请选择部门" placeholder-class="input-placeholder" />
 						<view class="info_more">
 							<image class="more" src="/images/xiala@2x.png" />
 						</view>
@@ -53,7 +55,8 @@
 				<view class="left">职务</view>
 				<picker range="{{post}}" range-key="name" value="{{post[post_index].id}}" bindchange="bindPickerChangePost">
 					<view class="select-box">
-						<input class="right-input" disabled="{{true}}" name="post_id" value="{{post[post_index].name}}" placeholder="请选择职务" placeholder-class="input-placeholder" />
+						<!-- <input class="right-input" disabled="{{true}}" name="post_id" value="{{post[post_index].name}}" placeholder="请选择职务" placeholder-class="input-placeholder" /> -->
+						<input class="right-input" disabled="{{true}}" name="post_id" value="{{post_name}}" placeholder="请选择职务" placeholder-class="input-placeholder" />
 						<view class="info_more">
 							<image class="more" src="/images/xiala@2x.png" />
 						</view>

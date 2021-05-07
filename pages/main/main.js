@@ -1,4 +1,5 @@
 // pages/main/main.js
+const app = getApp();
 Page({
 
   /**
@@ -42,6 +43,8 @@ Page({
         })
       },
     })
+
+    that.getCheck();  // 待评分考核
   },
 
   bindChange: function(e) {
@@ -126,6 +129,29 @@ Page({
   comment: function () {
     wx.navigateTo({
       url: '/pages/comment/comment',
+    })
+  },
+
+  // 获取待评分考核列表
+  getCheck: function () {
+    var that = this;
+    var openid = wx.getStorageSync('openid')
+    wx.request({
+      url: app.globalData.host + '/check/get',
+      data: {
+        openid: openid
+      },
+      method: "GET",
+      header: {
+        "Content-Type": "application/json"
+      },
+      success: function (res) {
+        if (res.data.code) {
+          that.setData({
+            worklist: res.data.data
+          })
+        }
+      }
     })
   }
 })

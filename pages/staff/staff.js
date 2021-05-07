@@ -1,4 +1,5 @@
 // pages/staff/staff.js
+const app = getApp()
 Page({
 
   /**
@@ -71,5 +72,28 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  // 获取员工列表
+  getStaff: function () {
+    var that = this;
+    var openid = wx.getStorageSync('openid');
+    wx.request({
+      url: app.globalData.host + '/department/get',
+      data: {
+        openid: openid
+      },
+      method: 'GET',
+      header: {
+        'Content-Type': "application/json"
+      },
+      success: function (res) {
+        if (res.data.code) {
+          that.setData({
+            list: res.data.data
+          })
+        }
+      }
+    })
   }
 })

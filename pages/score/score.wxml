@@ -2,31 +2,33 @@
 <view class='container'>
 	<view class='worklength'>
 		<view class='work-itembox'>
-			<view class="box">
-				<view class="content">
-					<view class="title">
-						2021年3月全员业绩表现考核
-					</view>
-					<view class="time">
-						<view class="time-left">
-							<view class="time-icon">
-								<image src="/images/date@2x.png"></image>
-							</view>
-							2021年3月28日
+			<block wx:for="{{list}}" wx:key="index">
+				<view class="box">
+					<view class="content">
+						<view class="title">
+							2021年3月全员业绩表现考核
 						</view>
-						<view class="time-right">
-							<view class="time-icon">
-								<image src="/images/pingjunfen@2x.png"></image>
+						<view class="time">
+							<view class="time-left">
+								<view class="time-icon">
+									<image src="/images/date@2x.png"></image>
+								</view>
+								2021年3月28日
 							</view>
-							平均分8分
+							<view class="time-right">
+								<view class="time-icon">
+									<image src="/images/pingjunfen@2x.png"></image>
+								</view>
+								平均分8分
+							</view>
 						</view>
-					</view>
-					<view class="btn-icon" bindtap="detail">
-						<text class="icon-text-detail">查看详情</text>
+						<view class="btn-icon" bindtap="detail">
+							<text class="icon-text-detail">查看详情</text>
+						</view>
 					</view>
 				</view>
-			</view>
-			<view class="box">
+			</block>
+			<!-- <view class="box">
 				<view class="content">
 					<view class="title">
 						2021年2月全员业绩表现考核
@@ -49,7 +51,7 @@
 						<text class="icon-text-detail">查看详情</text>
 					</view>
 				</view>
-			</view>
+			</view> -->
 		</view>
 	</view>
 </view>

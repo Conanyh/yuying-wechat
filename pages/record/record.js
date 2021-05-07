@@ -1,4 +1,5 @@
 // pages/record/record.js
+const app = getApp()
 Page({
 
   /**
@@ -42,6 +43,8 @@ Page({
         })
       },
     })
+
+    that.getRecord();   // 考核列表
   },
 
   bindChange: function(e) {
@@ -121,5 +124,29 @@ Page({
     wx.navigateTo({
       url: '/pages/comment/comment',
     })
+  },
+
+  // 获取考核记录列表
+  getRecord: function () {
+    var that = this;
+    var openid = wx.getStorageSync('openid');
+    var user_id = wx.getStorageSync('userInfo').id;
+
+    wx.request({
+      url: app.globalData.host + 'assessment/get',
+      data: {
+        user_id: user_id
+      },
+      method: 'GET',
+      header: {
+        "Content-type": "application/json"
+      },
+      success: function (res) {
+        if (res.data.code) {
+          // 
+        }
+      }
+    })
   }
+
 })

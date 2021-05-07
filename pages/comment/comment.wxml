@@ -91,7 +91,7 @@
 							<view class="time-icon">
 								<image src="/images/dot.png"></image>
 							</view>
-							<text class="time-left-tip">责任心</text><text class="time-left-score">(4分)</text>
+							<text class="time-left-tip">积极性</text><text class="time-left-score">(4分)</text>
 						</view>
 					</view>
 					<view class="time-content">
@@ -125,7 +125,7 @@
 							<view class="time-icon">
 								<image src="/images/dot.png"></image>
 							</view>
-							<text class="time-left-tip">责任心</text><text class="time-left-score">(4分)</text>
+							<text class="time-left-tip">沟通能力</text><text class="time-left-score">(4分)</text>
 						</view>
 					</view>
 					<view class="time-content">
@@ -159,7 +159,7 @@
 							<view class="time-icon">
 								<image src="/images/dot.png"></image>
 							</view>
-							<text class="time-left-tip">责任心</text><text class="time-left-score">(4分)</text>
+							<text class="time-left-tip">协作精神</text><text class="time-left-score">(4分)</text>
 						</view>
 					</view>
 					<view class="time-content">
@@ -193,7 +193,7 @@
 							<view class="time-icon">
 								<image src="/images/dot.png"></image>
 							</view>
-							<text class="time-left-tip">责任心</text><text class="time-left-score">(4分)</text>
+							<text class="time-left-tip">制度遵守</text><text class="time-left-score">(4分)</text>
 						</view>
 					</view>
 					<view class="time-content">
@@ -235,7 +235,7 @@
 							<view class="time-icon">
 								<image src="/images/dot.png"></image>
 							</view>
-							<text class="time-left-tip">责任心</text><text class="time-left-score">(4分)</text>
+							<text class="time-left-tip">creams数据</text><text class="time-left-score">(15分)</text>
 						</view>
 					</view>
 					<view class="time-content">
@@ -243,7 +243,7 @@
 							<view class="time-icon">
 								<text class="time-icon-font">自评：</text>
 							</view>
-							<text class="time-icon-score">4分</text>
+							<text class="time-icon-score">15分</text>
 						</view>
 						<view class="time-right">
 							<view class="time-icon">
@@ -269,7 +269,7 @@
 							<view class="time-icon">
 								<image src="/images/dot.png"></image>
 							</view>
-							<text class="time-left-tip">责任心</text><text class="time-left-score">(4分)</text>
+							<text class="time-left-tip">工资核算及发放</text><text class="time-left-score">(15分)</text>
 						</view>
 					</view>
 					<view class="time-content">
@@ -277,7 +277,7 @@
 							<view class="time-icon">
 								<text class="time-icon-font">自评：</text>
 							</view>
-							<text class="time-icon-score">4分</text>
+							<text class="time-icon-score">14分</text>
 						</view>
 						<view class="time-right">
 							<view class="time-icon">
@@ -303,7 +303,7 @@
 							<view class="time-icon">
 								<image src="/images/dot.png"></image>
 							</view>
-							<text class="time-left-tip">责任心</text><text class="time-left-score">(4分)</text>
+							<text class="time-left-tip">收付款</text><text class="time-left-score">(15分)</text>
 						</view>
 					</view>
 					<view class="time-content">
@@ -311,7 +311,7 @@
 							<view class="time-icon">
 								<text class="time-icon-font">自评：</text>
 							</view>
-							<text class="time-icon-score">4分</text>
+							<text class="time-icon-score">13分</text>
 						</view>
 						<view class="time-right">
 							<view class="time-icon">
@@ -337,7 +337,7 @@
 							<view class="time-icon">
 								<image src="/images/dot.png"></image>
 							</view>
-							<text class="time-left-tip">责任心</text><text class="time-left-score">(4分)</text>
+							<text class="time-left-tip">报销审核</text><text class="time-left-score">(15分)</text>
 						</view>
 					</view>
 					<view class="time-content">
@@ -345,7 +345,7 @@
 							<view class="time-icon">
 								<text class="time-icon-font">自评：</text>
 							</view>
-							<text class="time-icon-score">4分</text>
+							<text class="time-icon-score">13分</text>
 						</view>
 						<view class="time-right">
 							<view class="time-icon">
@@ -371,7 +371,7 @@
 							<view class="time-icon">
 								<image src="/images/dot.png"></image>
 							</view>
-							<text class="time-left-tip">责任心</text><text class="time-left-score">(4分)</text>
+							<text class="time-left-tip">单据管理</text><text class="time-left-score">(10分)</text>
 						</view>
 					</view>
 					<view class="time-content">
@@ -379,7 +379,41 @@
 							<view class="time-icon">
 								<text class="time-icon-font">自评：</text>
 							</view>
-							<text class="time-icon-score">4分</text>
+							<text class="time-icon-score">8分</text>
+						</view>
+						<view class="time-right">
+							<view class="time-icon">
+								<text class="time-icon-font">领导评：</text>
+							</view>
+							<view class="time-zone">
+								<!-- 减号 -->
+								<text class="{{minusStatus}}" bindtap="bindMinus">-</text>
+								<!-- 数值 -->
+								<input type="number" bindchange="bindManual" disabled="true" value="{{num}}" />
+								<!-- 加号 -->
+								<text class="normal" bindtap="bindPlus">+</text>
+							</view>
+						</view>
+					</view>
+				</view>
+			</view>
+			<view class="single-line"></view>
+			<view class="single">
+				<view class="time">
+					<view class="time-content">
+						<view class="time-left">
+							<view class="time-icon">
+								<image src="/images/dot.png"></image>
+							</view>
+							<text class="time-left-tip">资金管理</text><text class="time-left-score">(10分)</text>
+						</view>
+					</view>
+					<view class="time-content">
+						<view class="time-left">
+							<view class="time-icon">
+								<text class="time-icon-font">自评：</text>
+							</view>
+							<text class="time-icon-score">8分</text>
 						</view>
 						<view class="time-right">
 							<view class="time-icon">

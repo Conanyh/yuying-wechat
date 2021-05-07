@@ -144,8 +144,8 @@ page{
 }
 
 .time .time-left-tip {
-  font-size: 30rpx;
-  font-weight: bold;
+  font-size: 28rpx;
+  /* font-weight: bold; */
   color: #28282C;
 }
 
