@@ -1,5 +1,6 @@
 {
   "pages":[
+    
     "pages/main/main",
     "pages/mine/mine",
     "pages/login/login",

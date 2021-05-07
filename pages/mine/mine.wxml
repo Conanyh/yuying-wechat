@@ -5,10 +5,11 @@
 
 	<view class="user">
 		<view class="avatar">
-			<image src="/images/geren@3x.png"></image>
+			<image src='{{user.avatarUrl}}'></image>
+			<!-- <image src="/images/geren@3x.png"></image> -->
 		</view>
 		<view class="name">
-			<text>陈笑</text>
+			<text>{{userInfo.realname == '' ? '略' : userInfo.realname}}</text>
 		</view>
 		<view class="post">
 			<text>技术部 - 产品经理</text>

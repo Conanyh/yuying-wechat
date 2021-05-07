@@ -97,7 +97,9 @@ Page({
     });  
   },  
   /* 点击加号 */  
-  bindPlus: function() {  
+  bindPlus: function(e) {  
+    console.log(e)
+    var index = e.currentTarget.dataset.index;
     var num = this.data.num;  
     // 不作过多考虑自增1  
     num ++;  

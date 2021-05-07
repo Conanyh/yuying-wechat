@@ -20,6 +20,7 @@ page {
 .user .avatar image {
   width: 100rpx;
   height: 100rpx;
+  border-radius: 50%;
 }
 
 .user .name {
@@ -75,4 +76,12 @@ page {
 .item .img image{
   width: 80rpx;
   height: 80rpx;
+}
+
+.userinfo-avatar {
+  overflow: hidden;
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
 }
