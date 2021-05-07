@@ -1,4 +1,7 @@
 // pages/mine/mine.js
+import { http } from "../../utils/request";
+import { pageTo } from "../../utils/common";
+
 const app = getApp()
 Page({
 
@@ -121,20 +124,14 @@ Page({
 
   // 获取用户信息
   getUserInfo: function () {
-    var openid = wx.getStorageSync('openid')
-    wx.request({
-      url: app.globalData.host + '/user/getUserInfo',
-      data: {
-        openid: openid
-      },
-      method: 'GET',
-      header: {
-        "Content-type": "application/json"
-      },
-      success: function (res) {
+    let openid = wx.getStorageSync('openid')
+    if (openid) {
+      http.GET('user/getUserInfo', {openid}).then(res => {
         console.log(res)
-      }
-    })
+      })
+    } else {
+      pageTo('/pages/login/login')
+    }
   }
 
 })
