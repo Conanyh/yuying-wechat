@@ -1,4 +1,6 @@
 // pages/record/record.js
+import { http } from "../../utils/request";
+
 const app = getApp()
 Page({
 
@@ -13,9 +15,21 @@ Page({
     currentTab: 0,
     work: [],
     worklist: {},
+    checkList: [],
+    navData: [
+      {
+        key: 0,
+        name: '已完成',
+      },
+      {
+        key: 1,
+        name: '待评价',
+      },
+    ]
+
   },
 
-  selected: function (e) {
+  selected: function(e) {
     let that = this;
     let index = e.currentTarget.dataset.index;
     if (index == 0) {
@@ -34,12 +48,12 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     var that = this;
     wx.getSystemInfo({
       success: (result) => {
         that.setData({
-          clientHeight: result.windowHeight-40
+          clientHeight: result.windowHeight - 40
         })
       },
     })
@@ -48,104 +62,61 @@ Page({
   },
 
   bindChange: function(e) {
-    var that = this;
+    const that = this;
+    let cur = e.detail.current
+    that.getRecord(cur)
     that.setData({
       currentTab: e.detail.current
     });
   },
 
   swichNav: function(e) {
-    var that = this;
-    if (this.data.currentTab === e.target.dataset.current) {
+    if (e.type === 'change') {
+      return
+    }
+    const that = this;
+    let cur = e.currentTarget.dataset.current
+    if (that.data.currentTab === cur) {
       return false;
     } else {
+      that.getRecord(cur)
       that.setData({
-        currentTab: e.target.dataset.current
+        currentTab: cur
       })
     }
   },
 
   /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
-
-  detail: function () {
+  detail: function() {
     wx.navigateTo({
       url: '/pages/detail/detail',
     })
   },
 
-  comment: function () {
+  comment: function() {
     wx.navigateTo({
       url: '/pages/comment/comment',
     })
   },
 
   // 获取考核记录列表
-  getRecord: function () {
-    var that = this;
-    var openid = wx.getStorageSync('openid');
-    var user_id = wx.getStorageSync('userInfo').id;
-
-    wx.request({
-      url: app.globalData.host + 'assessment/get',
-      data: {
-        user_id: user_id
-      },
-      method: 'GET',
-      header: {
-        "Content-type": "application/json"
-      },
-      success: function (res) {
-        if (res.data.code) {
-          // 
-        }
-      }
+  getRecord: function(cur = 0) {
+    let openid = wx.getStorageSync('openid');
+    let params = {openid}
+    if (cur > 0) {
+      params.status = 1
+    }
+    const _this =this
+    http.GET('assessment/get', params).then(res => {
+      this.setData({
+        checkList: res.data
+      })
     })
   }
 

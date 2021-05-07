@@ -11,14 +11,14 @@
 
 		<view class='work-itembox'>
 			<swiper current="{{currentTab}}" class="swiper-box" duration="300" bindchange="bindChange" style="height: {{clientHeight?clientHeight+'px':'auto'}}">
-				<swiper-item>
-					<view class="box">
+				<swiper-item >
+					<view wx:for="{{checkList}}" wx:key="index" class="box">
 						<view class="content">
 							<view class="title">
 								<view class="title-icon">
 									<image src="/images/yiwanchengdefault@2x.png"></image>
 								</view>
-								2021年3月全员业绩表现考核
+								{{ item.check.name }}
 							</view>
 							<view class="box-line"></view>
 							<view class="time">
@@ -27,13 +27,13 @@
 										<view class="time-icon">
 											<image src="/images/name@2x.png"></image>
 										</view>
-										陈笑
+										{{ item.user.realname }}
 									</view>
 									<view class="time-right">
 										<view class="time-icon">
 											<image src="/images/date@2x.png"></image>
 										</view>
-										2021年2月27日
+                                        {{ item.created_at_text  }}
 									</view>
 								</view>
 								<view class="time-content">
@@ -41,13 +41,13 @@
 										<view class="time-icon">
 											<image src="/images/bumen@2x.png"></image>
 										</view>
-										技术部
+                                        {{ item.user.department_name }}
 									</view>
 									<view class="time-right">
 										<view class="time-icon">
 											<image src="/images/zhiwei@2x.png"></image>
 										</view>
-										产品经理
+                                        {{ item.user.department_position_name }}
 									</view>
 								</view>
 							</view>
@@ -56,88 +56,46 @@
 							</view>
 						</view>
 					</view>
-					<view class="box">
-						<view class="content">
-							<view class="title">
-								<view class="title-icon">
-									<image src="/images/daipingfen@2x.png"></image>
-								</view>
-								2021年3月全员业绩表现考核
-							</view>
-							<view class="box-line"></view>
-							<view class="time">
-								<view class="time-content">
-									<view class="time-left">
-										<view class="time-icon">
-											<image src="/images/name@2x.png"></image>
-										</view>
-										陈笑
-									</view>
-									<view class="time-right">
-										<view class="time-icon">
-											<image src="/images/date@2x.png"></image>
-										</view>
-										2021年2月27日
-									</view>
-								</view>
-								<view class="time-content">
-									<view class="time-left">
-										<view class="time-icon">
-											<image src="/images/bumen@2x.png"></image>
-										</view>
-										技术部
-									</view>
-									<view class="time-right">
-										<view class="time-icon">
-											<image src="/images/zhiwei@2x.png"></image>
-										</view>
-										产品经理
-									</view>
-								</view>
-							</view>
-							<view class="btn-icon" bindtap="comment">
-								<text class="icon-text-join">去点评</text>
-							</view>
-						</view>
-					</view>
 				</swiper-item>
 				<swiper-item>
-					<view class="box">
+					<view wx:for="{{checkList}}" wx:key="index" class="box">
 						<view class="content">
 							<view class="title">
 								<view class="title-icon">
 									<image src="/images/daipingfen@2x.png"></image>
 								</view>
-								2021年3月全员业绩表现考核
-							</view>
+                                {{ item.check.name }}
+                            </view>
 							<view class="time">
 								<view class="time-content">
 									<view class="time-left">
 										<view class="time-icon">
 											<image src="/images/name@2x.png"></image>
 										</view>
-										陈笑
-									</view>
+                                        {{ item.user.realname }}
+
+                                    </view>
 									<view class="time-right">
 										<view class="time-icon">
 											<image src="/images/date@2x.png"></image>
 										</view>
-										2021年2月27日
-									</view>
+                                        {{ item.created_at_text  }}
+                                    </view>
 								</view>
 								<view class="time-content">
 									<view class="time-left">
 										<view class="time-icon">
 											<image src="/images/bumen@2x.png"></image>
 										</view>
-										技术部
-									</view>
+                                        {{ item.user.department_name }}
+
+                                    </view>
 									<view class="time-right">
 										<view class="time-icon">
 											<image src="/images/zhiwei@2x.png"></image>
 										</view>
-										产品经理
-									</view>
+                                        {{ item.user.department_position_name }}
+                                    </view>
 								</view>
 							</view>
 							<view class="btn-icon" bindtap="comment">
