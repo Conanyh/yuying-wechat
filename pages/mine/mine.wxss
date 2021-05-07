@@ -17,6 +17,11 @@ page {
   margin-top: 60rpx;
 }
 
+.user .avatar .head-icon {
+  border-radius: 50%;
+  overflow: hidden;
+}
+
 .user .avatar image {
   width: 100rpx;
   height: 100rpx;

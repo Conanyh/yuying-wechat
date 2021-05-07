@@ -1,0 +1,103 @@
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+    <!-- <scroll-view scroll-y style="height: 100%;"> -->
+<view class="scroll-view-item" style='padding-top: {{height}}px; text-align:center; font-weight:bold; color: #fff; margin:0 2%'>考核详情
+    <view style="float: left;" bindtap="goback">
+        <image src="/images/left-w.png" style="height:44rpx; width: 38rpx"></image>
+    </view>
+</view>
+
+<view class="title">
+    <text>{{assessment.check.name}}</text>
+    <view><image src="/images/yiwancheng@2x.png"></image></view>
+</view>
+
+<view class="box">
+    <view class="user">
+        <view class="user-content">
+            <view class="user-left">
+                <view class="user-icon">
+                    <text>姓名</text>
+                </view>
+                <text>{{assessment.user.realname}}</text>
+            </view>
+            <view class="user-right">
+                <view class="user-icon">
+                    <text>部门</text>
+                </view>
+                <text>{{assessment.user.department_name}}</text>
+            </view>
+        </view>
+        <view class="user-content">
+            <view class="user-left">
+                <view class="user-icon">
+                    <text>日期</text>
+                </view>
+                <text>{{assessment.created_at_text}}</text>
+            </view>
+            <view class="user-right">
+                <view class="user-icon">
+                    <text>职位</text>
+                </view>
+                <text>{{assessment.user.department_position_name}}</text>
+            </view>
+        </view>
+    </view>
+<block wx:for="{{questionInfo}}" wx:key="index">
+    <view class="tip">
+        <image src="/images/line@2x.png"></image>
+        <text class="font">{{item.name}} </text>
+        <text class="score"> ({{item.score}}分)</text>
+    </view>
+
+    <view class="content">
+        <view class="single">
+            <view class="time">
+                <view wx:for="{{item.checkCaptionItem}}" wx:for-item="cpItem" wx:for-index="idx" class="time-content">
+                    <view class="time-left">
+                        <view class="time-icon">
+                            <image src="/images/dot.png"></image>
+                        </view>
+                        <text class="time-left-tip">{{cpItem.name}}</text><text class="time-left-score">({{cpItem.score}}分)</text>
+                    </view>
+                    <view class="time-content score">
+                        <view class="time-left">
+                            <view class="time-icon">
+                                <text class="time-icon-font">自评：</text>
+                            </view>
+                            <text class="time-icon-score">{{cpItem.self_score || 0}}分</text>
+                        </view>
+                        <view class="time-right">
+                            <view class="time-icon">
+                                <text class="time-icon-font">领导评：</text>
+                            </view>
+                            <text class="time-icon-score">{{cpItem.leader_score || 0}}分</text>
+
+
+                        </view>
+                    </view>
+                </view>
+
+            </view>
+        </view>
+        <view class="single-line"></view>
+
+    </view>
+
+</block>
+
+    <view class="tip">
+        <image src="/images/line@2x.png"></image>
+        <text class="font">领导评语 </text>
+    </view>
+    <view class="textarea">
+        <textarea placeholder="请输入您的评价" disabled readonly="readonly" value="{{assessment.comment}}" placeholder-class="textaea-placeholder" auto-height style="border: 1rpx solid #33333;">
+        </textarea>
+    </view>
+
+    <!-- <view class="bottom">
+        <button class="save-btn" form-type="submit">提交考核</button>
+    </view> -->
+
+</view>
+
+    <!-- </scroll-view> -->

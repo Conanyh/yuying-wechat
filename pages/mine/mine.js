@@ -1,4 +1,7 @@
 // pages/mine/mine.js
+import { http } from "../../utils/request";
+import { pageTo, tips } from "../../utils/common";
+
 const app = getApp()
 Page({
 
@@ -36,6 +39,7 @@ Page({
       },
     })
 
+
     wx.getUserInfo({
       success: function (res) {
         console.log(res)
@@ -48,7 +52,7 @@ Page({
       }
     })
 
-    that.getUserInfo(); // 获取用户信息
+    // that.getUserInfo(); // 获取用户信息
   },
 
   /**
@@ -147,27 +151,20 @@ Page({
 
   // 获取用户信息
   getUserInfo: function () {
-    var that = this;
-    var openid = wx.getStorageSync('openid')
-    wx.request({
-      url: app.globalData.host + '/user/getUserInfo',
-      data: {
-        openid: openid
-      },
-      method: 'GET',
-      header: {
-        "Content-type": "application/json"
-      },
-      success: function (res) {
-        console.log(res)
-        if (res.data.code) {
-          that.setData({
-            userInfo: res.data.data,
-          })
-          wx.setStorageSync('userInfo', res.data.data)
+    let openid = wx.getStorageSync('openid')
+    if (openid) {
+      http.GET('user/getUserInfo', {openid}).then(res => {
+        wx.setStorageSync('userInfo', res.data)
+        this.setData({
+          userInfo: res.data
+        })
+        if (!res.data) {
+          tips('请完善个人信息');
         }
-      }
-    })
+      })
+    } else {
+      pageTo('/pages/login/login')
+    }
   }
 
 })

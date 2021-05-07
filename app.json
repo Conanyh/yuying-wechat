@@ -13,7 +13,8 @@
     "pages/record/record",
     "pages/index/index",
     "pages/logs/logs",
-    "pages/jia/jia"
+    "pages/jia/jia",
+    "pages/check-detail/check-detail"
   ],
   "window":{
     "backgroundTextStyle":"light",
