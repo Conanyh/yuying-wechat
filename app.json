@@ -1,14 +1,13 @@
 {
   "pages":[
-    
     "pages/main/main",
     "pages/mine/mine",
     "pages/login/login",
     "pages/login/phone/phone",
     "pages/info/info",
-    "pages/detail/detail",
     "pages/join/join",
     "pages/comment/comment",
+    "pages/detail/detail",
     "pages/staff/staff",
     "pages/score/score",
     "pages/record/record",

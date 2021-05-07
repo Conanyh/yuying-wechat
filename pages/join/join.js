@@ -13,8 +13,102 @@ Page({
     },
     // 导航头的高度
     height: 0,
-    num: 1, // input默认是1
-    minusStatus: 'disabled'
+
+    list: {
+      userInfo: [],
+      item_one:[
+        {
+          id:1,
+          title:"责任心",
+          name: 'one1',
+          num:1,
+          score: 4,
+          minusStatus: 'disabled'
+        },
+        {
+          id: 2,
+          title: "积极性",
+          name: 'one2',
+          num: 1,
+          score: 4,
+          minusStatus: 'disabled'
+        },
+        {
+          id: 3,
+          title: "沟通能力",
+          name: 'one3',
+          num: 1,
+          score: 4,
+          minusStatus: 'disabled'
+        },
+        {
+          id: 4,
+          title: "协作精神",
+          name: 'one4',
+          num: 1,
+          score: 4,
+          minusStatus: 'disabled'
+        },
+        {
+          id: 5,
+          title: "制度遵守",
+          name: 'one5',
+          num: 1,
+          score: 4,
+          minusStatus: 'disabled'
+        },
+      ],
+      item_two:[
+        {
+          id:1,
+          title:"creams数据",
+          name: 'two1',
+          num:1,
+          score: 15,
+          minusStatus: 'disabled'
+        },
+        {
+          id: 2,
+          title: "工资核算及发放",
+          name: 'two2',
+          num: 1,
+          score: 15,
+          minusStatus: 'disabled'
+        },
+        {
+          id: 3,
+          title: "收付款",
+          name: 'two3',
+          num: 1,
+          score: 15,
+          minusStatus: 'disabled'
+        },
+        {
+          id: 4,
+          title: "报销审核",
+          name: 'two4',
+          num: 1,
+          score: 15,
+          minusStatus: 'disabled'
+        },
+        {
+          id: 5,
+          title: "单据管理",
+          name: 'two5',
+          num: 1,
+          score: 10,
+          minusStatus: 'disabled'
+        },
+        {
+          id: 6,
+          title: "资金管理",
+          name: 'two6',
+          num: 1,
+          score: 10,
+          minusStatus: 'disabled'
+        }
+      ],
+    }
   },
 
   /**
@@ -81,43 +175,91 @@ Page({
   onShareAppMessage: function () {
 
   },
-  /* 点击减号 */  
-  bindMinus: function() {  
-    var num = this.data.num;  
-    // 如果大于1时，才可以减  
-    if (num > 1) {  
-        num --;  
-    }  
-    // 只有大于一件的时候，才能normal状态，否则disable状态  
-    var minusStatus = num <= 1 ? 'disabled' : 'normal';  
-    // 将数值与状态写回  
-    this.setData({  
-        num: num,  
-        minusStatus: minusStatus  
-    });  
-  },  
-  /* 点击加号 */  
-  bindPlus: function(e) {  
-    console.log(e)
+
+  // 减
+  sub: function(e) {
+    var that = this;
     var index = e.currentTarget.dataset.index;
-    var num = this.data.num;  
-    // 不作过多考虑自增1  
-    num ++;  
-    // 只有大于一件的时候，才能normal状态，否则disable状态  
-    var minusStatus = num < 1 ? 'disabled' : 'normal';  
-    // 将数值与状态写回  
-    this.setData({  
-        num: num,  
-        minusStatus: minusStatus  
-    });  
-  },  
-  /* 输入框事件 */  
-  bindManual: function(e) {  
-    var num = e.detail.value;  
-    // 将数值与状态写回  
-    this.setData({  
-        num: num  
-    });  
+    let item_one = that.data.list.item_one;
+    let num = item_one[index].num;
+    var item = "list.item_one";
+    if (num < 3) {
+      var minusStatus = 'disabled';
+      item_one[index].minusStatus = minusStatus;
+      that.setData({
+        [item]: item_one
+      })
+    }
+    if (num <= 1) {
+      return false;
+    }
+    num = num - 1;
+    item_one[index].num = num
+    that.setData({
+      [item]: item_one,
+    })
+  },
+
+  // 加
+  add: function (e) {
+    var that = this;
+    var index = e.currentTarget.dataset.index;
+    let item_one = that.data.list.item_one;
+    let num = item_one[index].num;
+    num = num + 1;
+    if (num > item_one[index].score) {
+      num = item_one[index].score
+    }
+    var minusStatus = 'normal';
+    item_one[index].minusStatus = minusStatus;
+    item_one[index].num = num;
+    var item = "list.item_one";
+    that.setData({
+      [item] : item_one
+    })
+  },
+
+  // 减
+  sub2: function(e) {
+    var that = this;
+    var index = e.currentTarget.dataset.index;
+    let item_two = that.data.list.item_two;
+    var item = "list.item_two";
+    let num = item_two[index].num;
+    if (num < 3) {
+      var minusStatus = 'disabled';
+      item_two[index].minusStatus = minusStatus;
+      that.setData({
+        [item]: item_two
+      })
+    }
+    if (num <= 1) {
+      return false;
+    }
+    num = num - 1;
+    item_two[index].num = num
+    that.setData({
+      [item]: item_two,
+    })
+  },
+
+  // 加
+  add2: function (e) {
+    var that = this;
+    var index = e.currentTarget.dataset.index;
+    let item_two = that.data.list.item_two;
+    var item = "list.item_two";
+    let num = item_two[index].num;
+    num = num + 1;
+    if (num > item_two[index].score) {
+      num = item_two[index].score
+    }
+    var minusStatus = 'normal';
+    item_two[index].minusStatus = minusStatus;
+    item_two[index].num = num;
+    that.setData({
+      [item]: item_two,
+    })
   },
 
   goback: function () {

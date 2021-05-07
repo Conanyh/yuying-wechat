@@ -13,8 +13,121 @@ Page({
     },
     // 导航头的高度
     height: 0,
-    num: 1, // input默认是1
-    minusStatus: 'disabled'
+    info: {
+      userInfo: [
+        {
+          name: '陈笑',
+          deparment: '技术部',
+          created_at: '2021年3月28日',
+          reviewer: '朱经理',
+          post: '产品经理'
+        }
+      ],
+      item_one:[
+        {
+          id:1,
+          title:"责任心",
+          name: 'one1',
+          self_score: '4',
+          num:1,
+          leader_score: '4',
+          score: 4
+        },
+        {
+          id: 2,
+          title: "积极性",
+          name: 'one2',
+          self_score: '4',
+          num: 1,
+          leader_score: '4',
+          score: 4
+        },
+        {
+          id: 3,
+          title: "沟通能力",
+          name: 'one3',
+          self_score: '4',
+          num: 1,
+          leader_score: '4',
+          score: 4
+        },
+        {
+          id: 4,
+          title: "协作精神",
+          name: 'one4',
+          self_score: '4',
+          num: 1,
+          leader_score: '4',
+          score: 4
+        },
+        {
+          id: 5,
+          title: "制度遵守",
+          name: 'one5',
+          self_score: '4',
+          num: 1,
+          leader_score: '4',
+          score: 4
+        },
+      ],
+      item_two:[
+        {
+          id:1,
+          title:"creams数据",
+          name: 'two1',
+          self_score: '4',
+          num:1,
+          leader_score: '4',
+          score: 15
+        },
+        {
+          id: 2,
+          title: "工资核算及发放",
+          name: 'two2',
+          self_score: '4',
+          num: 1,
+          leader_score: '4',
+          score: 15
+        },
+        {
+          id: 3,
+          title: "收付款",
+          name: 'two3',
+          self_score: '4',
+          num: 1,
+          leader_score: '4',
+          score: 15
+        },
+        {
+          id: 4,
+          title: "报销审核",
+          name: 'two4',
+          self_score: '4',
+          num: 1,
+          leader_score: '4',
+          score: 15
+        },
+        {
+          id: 5,
+          title: "单据管理",
+          name: 'two5',
+          self_score: '4',
+          num: 1,
+          leader_score: '4',
+          score: 10
+        },
+        {
+          id: 6,
+          title: "资金管理",
+          name: 'two6',
+          self_score: '4',
+          num: 1,
+          leader_score: '4',
+          score: 10
+        }
+      ],
+      comment: 'comment详情'
+    }
   },
 
   /**
@@ -80,42 +193,6 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-  /* 点击减号 */  
-  bindMinus: function() {  
-    var num = this.data.num;  
-    // 如果大于1时，才可以减  
-    if (num > 1) {  
-        num --;  
-    }  
-    // 只有大于一件的时候，才能normal状态，否则disable状态  
-    var minusStatus = num <= 1 ? 'disabled' : 'normal';  
-    // 将数值与状态写回  
-    this.setData({  
-        num: num,  
-        minusStatus: minusStatus  
-    });  
-  },  
-  /* 点击加号 */  
-  bindPlus: function() {  
-    var num = this.data.num;  
-    // 不作过多考虑自增1  
-    num ++;  
-    // 只有大于一件的时候，才能normal状态，否则disable状态  
-    var minusStatus = num < 1 ? 'disabled' : 'normal';  
-    // 将数值与状态写回  
-    this.setData({  
-        num: num,  
-        minusStatus: minusStatus  
-    });  
-  },  
-  /* 输入框事件 */  
-  bindManual: function(e) {  
-    var num = e.detail.value;  
-    // 将数值与状态写回  
-    this.setData({  
-        num: num  
-    });  
   },
 
   goback: function () {
