@@ -154,9 +154,12 @@ Page({
     let openid = wx.getStorageSync('openid')
     if (openid) {
       http.GET('user/getUserInfo', {openid}).then(res => {
-        console.log(res)
-        if (res.data) {
-          wx.setStorageSync('userInfo', res.data)
+        wx.setStorageSync('userInfo', res.data)
+        this.setData({
+          userInfo: res.data
+        })
+        if (!res.data) {
+          tips('请完善个人信息');
         }
       })
     } else {

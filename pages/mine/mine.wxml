@@ -5,7 +5,9 @@
 
 	<view class="user">
 		<view class="avatar">
-			<image src='{{user.avatarUrl}}'></image>
+            <view class="head-icon">
+                <open-data type="userAvatarUrl"></open-data>
+            </view>
 			<!-- <image src="/images/geren@3x.png"></image> -->
 		</view>
 		<view class="name">

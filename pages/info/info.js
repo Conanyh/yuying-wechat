@@ -74,10 +74,6 @@ Page({
 
   },
 
-  formSubmit: function (e) {
-    console.log('form发生了submit事件', e);
-  },
-
   bindPickerChange: function (e) {
     console.log('picker发生选择改变', e)
   },
@@ -128,7 +124,7 @@ Page({
     } else if (tip == "phone") {
       that.setData({
         phone: ''
-      }) 
+      })
     } else if (tip == "department") {
       that.setData({
         department: ''
@@ -138,7 +134,7 @@ Page({
         post: ''
       })
     }
-    
+
   },
 
   // 显示错误Toast框
@@ -245,9 +241,6 @@ Page({
       }
     })
 
-    console.log(realname, age, mobile, gender, department_id, department_position_id);
-
-
     return false;
     this.showToast({
       msg: '提交成功'
@@ -268,7 +261,7 @@ Page({
         that.setData({
           department: res.data.data
         })
-        
+
       }
     })
   },
@@ -290,7 +283,7 @@ Page({
         that.setData({
           post: res.data.data
         })
-        
+
       }
     })
   }
