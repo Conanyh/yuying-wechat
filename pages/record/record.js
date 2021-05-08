@@ -101,9 +101,10 @@ Page({
     })
   },
 
-  comment: function() {
+  comment: function(e) {
+    let id = e.currentTarget.dataset.id
     wx.navigateTo({
-      url: '/pages/comment/comment',
+      url: '/pages/comment/comment?id=' + id,
     })
   },
 

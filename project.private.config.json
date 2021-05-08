@@ -35,6 +35,12 @@
           "pathName": "pages/staff/staff",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/comment/comment",
+          "pathName": "pages/comment/comment",
+          "query": "id=9",
+          "scene": null
         }
       ]
     }

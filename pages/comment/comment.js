@@ -1,4 +1,7 @@
 // pages/comment/comment.js
+import { http } from "../../utils/request";
+import { tips } from "../../utils/common";
+
 const app = getApp()
 Page({
 
@@ -16,117 +19,22 @@ Page({
     height: 0,
     list: {
       userInfo: [],
-      item_one:[
-        {
-          id:1,
-          title:"责任心",
-          name: 'one1',
-          self_score: '4',
-          num:1,
-          score: 4,
-          minusStatus: 'disabled'
-        },
-        {
-          id: 2,
-          title: "积极性",
-          name: 'one2',
-          self_score: '4',
-          num: 1,
-          score: 4,
-          minusStatus: 'disabled'
-        },
-        {
-          id: 3,
-          title: "沟通能力",
-          name: 'one3',
-          self_score: '4',
-          num: 1,
-          score: 4,
-          minusStatus: 'disabled'
-        },
-        {
-          id: 4,
-          title: "协作精神",
-          name: 'one4',
-          self_score: '4',
-          num: 1,
-          score: 4,
-          minusStatus: 'disabled'
-        },
-        {
-          id: 5,
-          title: "制度遵守",
-          name: 'one5',
-          self_score: '4',
-          num: 1,
-          score: 4,
-          minusStatus: 'disabled'
-        },
-      ],
-      item_two:[
-        {
-          id:1,
-          title:"creams数据",
-          name: 'two1',
-          self_score: '4',
-          num:1,
-          score: 15,
-          minusStatus: 'disabled'
-        },
-        {
-          id: 2,
-          title: "工资核算及发放",
-          name: 'two2',
-          self_score: '4',
-          num: 1,
-          score: 15,
-          minusStatus: 'disabled'
-        },
-        {
-          id: 3,
-          title: "收付款",
-          name: 'two3',
-          self_score: '4',
-          num: 1,
-          score: 15,
-          minusStatus: 'disabled'
-        },
-        {
-          id: 4,
-          title: "报销审核",
-          name: 'two4',
-          self_score: '4',
-          num: 1,
-          score: 15,
-          minusStatus: 'disabled'
-        },
-        {
-          id: 5,
-          title: "单据管理",
-          name: 'two5',
-          self_score: '4',
-          num: 1,
-          score: 10,
-          minusStatus: 'disabled'
-        },
-        {
-          id: 6,
-          title: "资金管理",
-          name: 'two6',
-          self_score: '4',
-          num: 1,
-          score: 10,
-          minusStatus: 'disabled'
-        }
-      ],
-    }
+    },
+    questionList: [],
+    commentStr: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     var that = this;
+    if (!options.id || typeof options.id === "undefined") {
+      tips('资源不存在')
+    }
+
+    this.initPageData(options.id)
+
     wx.getSystemInfo({
       success: (result) => {
         console.log(result)
@@ -138,150 +46,99 @@ Page({
     })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
-  
-  // 减
-  sub: function(e) {
-    var that = this;
-    var index = e.currentTarget.dataset.index;
-    let item_one = that.data.list.item_one;
-    let num = item_one[index].num;
-    var item = "list.item_one";
-    if (num < 3) {
-      var minusStatus = 'disabled';
-      item_one[index].minusStatus = minusStatus;
-      that.setData({
-        [item]: item_one
+  initPageData(id) {
+    let openid = wx.getStorageSync('openid')
+    http.GET('assessment/getStaffRecord', {id, openid}).then(res => {
+      this.setData({
+        assessment: res.data.assessment,
+        questionList: res.data.questionInfo,
       })
-    }
-    if (num <= 1) {
-      return false;
-    }
-    num = num - 1;
-    item_one[index].num = num
-    that.setData({
-      [item]: item_one,
-    })
-  },
-
-  // 加
-  add: function (e) {
-    var that = this;
-    var index = e.currentTarget.dataset.index;
-    let item_one = that.data.list.item_one;
-    let num = item_one[index].num;
-    num = num + 1;
-    if (num > item_one[index].score) {
-      num = item_one[index].score
-    }
-    var minusStatus = 'normal';
-    item_one[index].minusStatus = minusStatus;
-    item_one[index].num = num;
-    var item = "list.item_one";
-    that.setData({
-      [item] : item_one
     })
   },
 
   // 减
-  sub2: function(e) {
-    var that = this;
-    var index = e.currentTarget.dataset.index;
-    let item_two = that.data.list.item_two;
-    var item = "list.item_two";
-    let num = item_two[index].num;
-    if (num < 3) {
-      var minusStatus = 'disabled';
-      item_two[index].minusStatus = minusStatus;
-      that.setData({
-        [item]: item_two
-      })
+  sub: function(e) {
+    const that = this;
+    let parentIndex = e.currentTarget.dataset.parent
+    let index = e.currentTarget.dataset.index;
+    let questionList = that.data.questionList
+    if (questionList[parentIndex].checkCaptionItem[index].leader_score - 1 < 0) {
+      return
     }
-    if (num <= 1) {
-      return false;
+    if (questionList[parentIndex].checkCaptionItem[index].leader_score - 1 === 0) {
+      questionList[parentIndex].checkCaptionItem[index].minusStatus = 'disabled'
     }
-    num = num - 1;
-    item_two[index].num = num
+    questionList[parentIndex].checkCaptionItem[index].leader_score -= 1
+    questionList[parentIndex].checkCaptionItem[index].maxStatus = 'normal'
+
     that.setData({
-      [item]: item_two,
+      questionList,
     })
   },
 
   // 加
-  add2: function (e) {
-    var that = this;
-    var index = e.currentTarget.dataset.index;
-    let item_two = that.data.list.item_two;
-    var item = "list.item_two";
-    let num = item_two[index].num;
-    num = num + 1;
-    if (num > item_two[index].score) {
-      num = item_two[index].score
+  add: function(e) {
+    const that = this;
+    let parentIndex = e.currentTarget.dataset.parent
+    let index = e.currentTarget.dataset.index;
+    let questionList = that.data.questionList
+    if (questionList[parentIndex].checkCaptionItem[index].leader_score + 1 > questionList[parentIndex].checkCaptionItem[index].score) {
+      return
     }
-    var minusStatus = 'normal';
-    item_two[index].minusStatus = minusStatus;
-    item_two[index].num = num;
+    if (questionList[parentIndex].checkCaptionItem[index].leader_score + 1 === questionList[parentIndex].checkCaptionItem[index].score) {
+      questionList[parentIndex].checkCaptionItem[index].maxStatus = 'disabled'
+    }
+    questionList[parentIndex].checkCaptionItem[index].leader_score += 1
+    questionList[parentIndex].checkCaptionItem[index].minusStatus = 'normal'
     that.setData({
-      [item]: item_two,
+      questionList,
     })
   },
 
   // 返回上一页
-  goback: function () {
+  goback: function() {
     wx.navigateBack({
       delta: 1
     })
   },
 
-  formSubmit: function (e) {
-    console.log(e)
-  }
+  formSubmit: function(e) {
+    let openid = wx.getStorageSync('openid')
+    let originData = this.data.questionList
+    if (this.data.commentStr === '') {
+      tips('评语不可为空')
+      return
+    }
+
+    let postData = {};
+    let arrData = []
+    for (let index in originData) {
+      for (let idx in originData[index].checkCaptionItem) {
+        let localData = {}
+        localData.id = originData[index].checkCaptionItem[idx].item_id
+        localData.score = originData[index].checkCaptionItem[idx].leader_score
+        arrData.push(localData)
+      }
+    }
+    postData.id = this.data.assessment.id
+    postData.openid = openid
+    postData.item = arrData
+    postData.comment = this.data.commentStr
+    console.log(postData)
+    http.POST('assessment/addLeader', postData, 2).then(res => {
+      if (res.code === 1) {
+        tips('提交成功')
+      } else {
+        tips(res.msg)
+      }
+    })
+  },
+  getComment(e){
+    let val = e.detail.value
+    console.log(val)
+    this.setData({
+      commentStr: val
+    })
+  },
 
 })

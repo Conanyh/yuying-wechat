@@ -7,7 +7,7 @@
 </view>
 <form bindsubmit="formSubmit">
 	<view class="title">
-		<text>2021年3月全员业绩表现考核</text>
+		<text>{{assessment.check.name}}</text>
 	</view>
 
 	<view class="box">
@@ -17,13 +17,13 @@
 					<view class="user-icon">
 						<text>姓名</text>
 					</view>
-					<text>陈笑</text>
+					<text>{{assessment.user.realname}}</text>
 				</view>
 				<view class="user-right">
 					<view class="user-icon">
 						<text>部门</text>
 					</view>
-					<text>技术部</text>
+					<text>{{assessment.user.department_name}}</text>
 				</view>
 			</view>
 			<view class="user-content">
@@ -31,113 +31,68 @@
 					<view class="user-icon">
 						<text>日期</text>
 					</view>
-					<text>2021年3月28日</text>
+					<text>{{assessment.check.created_at_text}}</text>
 				</view>
 				<view class="user-right">
 					<view class="user-icon">
 						<text>职位</text>
 					</view>
-					<text>产品经理</text>
+					<text>{{assessment.user.department_position_name}}</text>
 				</view>
 			</view>
 		</view>
+        <block wx:for="{{questionList}}" wx:key="index">
+            <view class="tip">
+                <image src="/images/line@2x.png"></image>
+                <text class="font">{{item.name}} </text>
+                <text class="score"> ({{item.score}}分)</text>
+            </view>
 
-		<view class="tip">
-			<image src="/images/line@2x.png"></image>
-			<text class="font">工作态度与写作精神 </text>
-			<text class="score"> (20分)</text>
-		</view>
-
-		<view class="content">
-			<block wx:for="{{list.item_one}}" wx:key="key">
-				<view class="single">
-					<view class="time">
-						<view class="time-content">
-							<view class="time-left">
-								<view class="time-icon">
-									<image src="/images/dot.png"></image>
-								</view>
-								<text class="time-left-tip">{{item.title}}</text><text class="time-left-score">({{item.score}}分)</text>
-							</view>
-						</view>
-						<view class="time-content">
-							<view class="time-left">
-								<view class="time-icon">
-									<text class="time-icon-font">自评：</text>
-								</view>
-								<text class="time-icon-score">{{item.self_score}}分</text>
-							</view>
-							<view class="time-right">
-								<view class="time-icon">
-									<text class="time-icon-font">领导评：</text>
-								</view>
-								<view class="time-zone">
-									<!-- 减号 -->
-									<text class="{{item.minusStatus}}" data-index="{{index}}" bindtap='sub'>-</text>
-									<!-- 数值 -->
-									<input type="number" data-index="{{index}}" name="{{item.name}}" bindchange="bindManual" disabled="true" value="{{item.num}}" />
-									<!-- 加号 -->
-									<text class="normal" data-index="{{index}}" bindtap='add'>+</text>
-								</view>
-							</view>
-						</view>
-					</view>
-				</view>
-				<view class="single-line"></view>
-			</block>
-		</view>
-
-		<view class="tip">
-			<image src="/images/line@2x.png"></image>
-			<text class="font">工作能力与业绩 </text>
-			<text class="score"> (80分)</text>
-		</view>
-
-		<view class="content">
-			<block wx:for="{{list.item_two}}" wx:key="key">
-				<view class="single">
-					<view class="time">
-						<view class="time-content">
-							<view class="time-left">
-								<view class="time-icon">
-									<image src="/images/dot.png"></image>
-								</view>
-								<text class="time-left-tip">{{item.title}}</text><text class="time-left-score">({{item.score}}分)</text>
-							</view>
-						</view>
-						<view class="time-content">
-							<view class="time-left">
-								<view class="time-icon">
-									<text class="time-icon-font">自评：</text>
-								</view>
-								<text class="time-icon-score">{{item.self_score}}分</text>
-							</view>
-							<view class="time-right">
-								<view class="time-icon">
-									<text class="time-icon-font">领导评：</text>
-								</view>
-								<view class="time-zone">
-									<!-- 减号 -->
-									<text class="{{item.minusStatus}}" data-index="{{index}}" bindtap='sub2'>-</text>
-									<!-- 数值 -->
-									<input type="number" data-index="{{index}}" name="{{item.name}}" bindchange="bindManual" disabled="true" value="{{item.num}}" />
-									<!-- 加号 -->
-									<text class="normal" data-index="{{index}}" bindtap='add2'>+</text>
-								</view>
-							</view>
-						</view>
-					</view>
-				</view>
-				<view class="single-line"></view>
-			</block>
-		</view>
-
+            <view class="content">
+                <block wx:for="{{item.checkCaptionItem}}" wx:for-item="cpItem" wx:for-index="idx" wx:key="idx">
+                    <view class="single">
+                        <view class="time">
+                            <view class="time-content">
+                                <view class="time-left" style="width: 80%;">
+                                    <view class="time-icon">
+                                        <image src="/images/dot.png"></image>
+                                    </view>
+                                    <text class="time-left-tip">{{cpItem.name}}</text><text class="time-left-score">({{cpItem.score}}分)</text>
+                                </view>
+                            </view>
+                            <view class="time-content">
+                                <view class="time-left">
+                                    <view class="time-icon">
+                                        <text class="time-icon-font">自评：</text>
+                                    </view>
+                                    <text class="time-icon-score">{{cpItem.self_score}}分</text>
+                                </view>
+                                <view class="time-right">
+                                    <view class="time-icon">
+                                        <text class="time-icon-font">领导评：</text>
+                                    </view>
+                                    <view class="time-zone">
+                                        <!-- 减号 -->
+                                        <text class="{{cpItem.minusStatus || 'disabled'}}" data-parent="{{index}}" data-index="{{idx}}" bindtap='sub'>-</text>
+                                        <!-- 数值 -->
+                                        <input type="number"  data-id="{{cpItem.id}}" name="{{cpItem.name}}" bindchange="bindManual" disabled="true" value="{{cpItem.leader_score}}" />
+                                        <!-- 加号 -->
+                                        <text class="{{cpItem.maxStatus || 'normal'}}" data-parent="{{index}}" data-index="{{idx}}" bindtap='add'>+</text>
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="single-line"></view>
+                </block>
+            </view>
+        </block>
 		<view class="tip">
 			<image src="/images/line@2x.png"></image>
 			<text class="font">领导评语 </text>
 		</view>
 		<view class="textarea">
-			<textarea placeholder="请输入您的评价" name="comment" placeholder-class="textaea-placeholder" auto-height></textarea>
+			<textarea placeholder="请输入您的评价" name="comment" placeholder-class="textaea-placeholder" bindinput="getComment" auto-height></textarea>
 		</view>
 
 		<view class="bottom">
