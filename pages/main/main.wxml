@@ -3,9 +3,9 @@
 	<view class='worklength'>
 		<view class="tab">
 			<view class='protab swiper-tab'>
-				<view class="swiper-tab-item {{currentTab==0 ? 'active' : ''}}" data-current="0" bindtap="swichNav">考核列表
+				<view class="swiper-tab-item {{currentTab==0 ? 'active' : ''}}" data-current="0" catchtap="swichNav">考核列表
 				</view>
-				<view class="swiper-tab-item {{currentTab==1 ? 'active' : ''}}" data-current="1" bindtap="swichNav">待评分考核</view>
+				<view class="swiper-tab-item {{currentTab==1 ? 'active' : ''}}" data-current="1" catchtap="swichNav">待评分考核</view>
 			</view>
 		</view>
 
@@ -96,8 +96,8 @@
                         <view class="box">
                             <view class="content">
                                 <view class="title">
-                                    <view class="title-icon">
-                                        <image src="/images/daipingfen@2x.png"></image>
+                                    <view wx:if="{{item.status !== null }}" class="title-icon">
+                                        <image src="{{ item.status === 0 ? '/images/daipingfen@2x.png' : '/images/yiwanchengdefault.png'  }}"></image>
                                     </view>
                                     {{item.name}}
                                 </view>
@@ -107,8 +107,8 @@
                                     </view>
                                     {{item.created_at}}
                                 </view>
-                                <view class="btn-icon" bindtap="comment">
-                                    <text class="icon-text-detail">查看详情</text>
+                                <view class="btn-icon" data-id="{{item.id}}" catchtap="{{ item.status === null ? 'join' : 'detail' }}">
+                                    <text class="icon-text-{{item.status === null ? 'join' : 'detail' }}">{{item.status === null ? '立即参与' : '查看详情'}}</text>
                                 </view>
                             </view>
                         </view>
@@ -132,8 +132,8 @@
 									</view>
 									{{item.created_at}}
 								</view>
-								<view class="btn-icon" catchtap="join" data-id="{{item.id}}">
-									<text class="icon-text-join">立即参与</text>
+								<view class="btn-icon" catchtap="detail" data-id="{{item.id}}">
+									<text class="icon-text-detail">查看详情</text>
 								</view>
 							</view>
 						</view>

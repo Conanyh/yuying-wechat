@@ -51,18 +51,22 @@ Page({
 
   bindChange: function(e) {
     const that = this;
-    if (e.type === 'tap') {
-      return false
+    console.log(e.type)
+    if (e.type == "tap") {
+      console.log(1111)
+      return
     }
+    let cur = e.detail.current
     that.setData({
-      currentTab: e.detail.current
+      currentTab:cur
     });
-    that.getCheck()
+    console.log(111)
+    that.getCheck(cur)
   },
 
   swichNav: function(e) {
     let cur = e.currentTarget.dataset.current
-    var that = this;
+    const that = this;
     if (this.data.currentTab === cur) {
       return false;
     } else {
@@ -70,7 +74,7 @@ Page({
         currentTab: cur
       })
     }
-    this.getCheck()
+    this.getCheck(cur)
   },
 
   /**
@@ -102,9 +106,10 @@ Page({
     })
   },
 
-  detail: function () {
+  detail (e) {
+    let id = e.currentTarget.dataset.id
     wx.navigateTo({
-      url: '/pages/detail/detail',
+      url: '/pages/detail/detail?id=' + id,
     })
   },
 
