@@ -5,16 +5,15 @@
 
 	<view class="user">
 		<view class="avatar">
-            <view class="head-icon">
-                <open-data type="userAvatarUrl"></open-data>
-            </view>
-			<!-- <image src="/images/geren@3x.png"></image> -->
+			<view class="head-icon">
+				<open-data type="userAvatarUrl"></open-data>
+			</view>
 		</view>
 		<view class="name">
 			<text>{{userInfo.realname == '' ? '略' : userInfo.realname}}</text>
 		</view>
 		<view class="post">
-			<text>技术部 - 产品经理</text>
+			<text>{{userInfo.department_name != '' ? userInfo.department_name : ''}} - {{userInfo.department_position_name != '' ? userInfo.department_position_name : ''}}</text>
 		</view>
 	</view>
 
@@ -33,13 +32,13 @@
 					</view>
 					<text>个人资料</text>
 				</view>
-				<view class="item" bindtap="goToStaff">
+				<view class="item" bindtap="goToStaff" wx:if="{{userInfo.switch}}">
 					<view class="img">
 						<image src="/images/yuangongliebiao@3x.png"></image>
 					</view>
 					<text>部门员工列表</text>
 				</view>
-				<view class="item" bindtap="goToRecord">
+				<view class="item" bindtap="goToRecord" wx:if="{{userInfo.switch}}">
 					<view class="img">
 						<image src="/images/kaohejilu@3x.png"></image>
 					</view>
