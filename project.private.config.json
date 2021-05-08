@@ -29,6 +29,12 @@
           "pathName": "pages/join/join",
           "query": "id=1",
           "scene": null
+        },
+        {
+          "name": "pages/staff/staff",
+          "pathName": "pages/staff/staff",
+          "query": "",
+          "scene": null
         }
       ]
     }
