@@ -21,6 +21,13 @@
         {
           "name": "pages/record/record",
           "pathName": "pages/record/record",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/join/join",
+          "pathName": "pages/join/join",
+          "query": "id=1",
           "scene": null
         }
       ]

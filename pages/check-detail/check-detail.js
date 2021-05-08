@@ -43,7 +43,6 @@ Page({
       tips('数据不存在')
     }
     http.GET('assessment/view', {id}).then(res => {
-      console.log(res)
       this.setData({
         assessment: res.data.assessment,
         questionInfo: res.data.questionInfo,
