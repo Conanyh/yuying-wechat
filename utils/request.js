@@ -1,6 +1,6 @@
 
-// const apiUrl = 'https://check.dhydwh.top/api/';
-const apiUrl = 'http://check.lo/api/';
+const apiUrl = 'https://check.dhydwh.top/api/';
+// const apiUrl = 'http://check.lo/api/';
 
 export const http = {
   POST: (url, params, type = 1) => {
