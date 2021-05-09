@@ -1,4 +1,6 @@
 // pages/main/main.js
+import { http } from "../../utils/request";
+
 const app = getApp();
 Page({
 
@@ -12,7 +14,7 @@ Page({
     // tab切换
     currentTab: 0,
     work: [],
-    worklist: {},
+    worklist: [],
   },
 
   selected: function (e) {
@@ -48,28 +50,31 @@ Page({
   },
 
   bindChange: function(e) {
-    var that = this;
+    const that = this;
+    console.log(e.type)
+    if (e.type == "tap") {
+      console.log(1111)
+      return
+    }
+    let cur = e.detail.current
     that.setData({
-      currentTab: e.detail.current
+      currentTab:cur
     });
+    console.log(111)
+    that.getCheck(cur)
   },
 
   swichNav: function(e) {
-    var that = this;
-    if (this.data.currentTab === e.target.dataset.current) {
+    let cur = e.currentTarget.dataset.current
+    const that = this;
+    if (this.data.currentTab === cur) {
       return false;
     } else {
       that.setData({
-        currentTab: e.target.dataset.current
+        currentTab: cur
       })
     }
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+    this.getCheck(cur)
   },
 
   /**
@@ -79,31 +84,11 @@ Page({
 
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
 
   },
 
@@ -114,15 +99,17 @@ Page({
 
   },
 
-  join: function () {
+  join (e) {
+    let id = e.currentTarget.dataset.id
     wx.navigateTo({
-      url: '/pages/join/join',
+      url: '/pages/join/join?id=' + id,
     })
   },
 
-  detail: function () {
+  detail (e) {
+    let id = e.currentTarget.dataset.id
     wx.navigateTo({
-      url: '/pages/detail/detail',
+      url: '/pages/detail/detail?id=' + id,
     })
   },
 
@@ -133,25 +120,17 @@ Page({
   },
 
   // 获取待评分考核列表
-  getCheck: function () {
-    var that = this;
-    var openid = wx.getStorageSync('openid')
-    wx.request({
-      url: app.globalData.host + '/check/get',
-      data: {
-        openid: openid
-      },
-      method: "GET",
-      header: {
-        "Content-Type": "application/json"
-      },
-      success: function (res) {
-        if (res.data.code) {
-          that.setData({
-            worklist: res.data.data
-          })
-        }
-      }
+  getCheck: function (cur = 0) {
+    const that = this;
+    let openid = wx.getStorageSync('openid')
+    let params =  {openid}
+    if (cur > 0) {
+      params.status = 1
+    }
+    http.GET('check/get', params).then(res => {
+      this.setData({
+        worklist: res.data
+      })
     })
   }
 })

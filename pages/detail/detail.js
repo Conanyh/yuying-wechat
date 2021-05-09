@@ -1,3 +1,6 @@
+import { tips } from "../../utils/common";
+import { http } from "../../utils/request";
+
 const app = getApp()
 Page({
 
@@ -134,15 +137,30 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this;
+    const that = this;
+    if (!options.id || typeof options.id === 'undefined') {
+      tips('资源不存在')
+      return
+    }
+
+    that.initPageData(options.id)
     wx.getSystemInfo({
       success: (result) => {
-        console.log(result)
-        console.log(result.statusBarHeight)
         that.setData({
           height: result.statusBarHeight + 10
         })
       },
+    })
+  },
+
+  initPageData(id){
+    let openid = wx.getStorageSync('openid')
+    http.GET('assessment/view', {id, openid}).then(res => {
+      this.setData({
+        assessment: res.data.assessment,
+        questionInfo: res.data.questionInfo,
+        userInfo: res.data.user,
+      })
     })
   },
 

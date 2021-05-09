@@ -1,3 +1,6 @@
+import { tips } from "../../utils/common";
+import { http } from "../../utils/request";
+
 const app = getApp()
 Page({
 
@@ -13,6 +16,9 @@ Page({
     },
     // 导航头的高度
     height: 0,
+    questionList: [],
+    checkTitle: {},
+    userInfo: {},
 
     list: {
       userInfo: [],
@@ -115,15 +121,30 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this;
+    const that = this;
     wx.getSystemInfo({
       success: (result) => {
-        console.log(result)
-        console.log(result.statusBarHeight)
         that.setData({
           height: result.statusBarHeight + 10
         })
       },
+    })
+    if (!options.id || typeof options.id === 'undefined') {
+      tips('文件不存在')
+    }
+
+    this.initPageData(options.id)
+  },
+
+  initPageData(id){
+    let openid = wx.getStorageSync('openid')
+    http.GET('check/view',{id,openid}).then(res=>{
+      this.setData({
+        userInfo: res.data.user,
+        questionList: res.data.questionList,
+        checkTitle: res.data.checkTitle,
+      })
+      console.log(res)
     })
   },
 
@@ -178,44 +199,40 @@ Page({
 
   // 减
   sub: function(e) {
-    var that = this;
-    var index = e.currentTarget.dataset.index;
-    let item_one = that.data.list.item_one;
-    let num = item_one[index].num;
-    var item = "list.item_one";
-    if (num < 3) {
-      var minusStatus = 'disabled';
-      item_one[index].minusStatus = minusStatus;
-      that.setData({
-        [item]: item_one
-      })
+    const that = this;
+    let parentIndex = e.currentTarget.dataset.parent
+    let index = e.currentTarget.dataset.index;
+    let questionList = that.data.questionList
+    if (questionList[parentIndex].checkCaptionItem[index].self_score - 1 < 0) {
+      return
     }
-    if (num <= 1) {
-      return false;
+    if (questionList[parentIndex].checkCaptionItem[index].self_score - 1 === 0) {
+      questionList[parentIndex].checkCaptionItem[index].minusStatus = 'disabled'
     }
-    num = num - 1;
-    item_one[index].num = num
+    questionList[parentIndex].checkCaptionItem[index].self_score -= 1
+    questionList[parentIndex].checkCaptionItem[index].maxStatus = 'normal'
+
     that.setData({
-      [item]: item_one,
+      questionList,
     })
   },
 
   // 加
   add: function (e) {
-    var that = this;
-    var index = e.currentTarget.dataset.index;
-    let item_one = that.data.list.item_one;
-    let num = item_one[index].num;
-    num = num + 1;
-    if (num > item_one[index].score) {
-      num = item_one[index].score
+    const that = this;
+    let parentIndex = e.currentTarget.dataset.parent
+    let index = e.currentTarget.dataset.index;
+    let questionList = that.data.questionList
+    if (questionList[parentIndex].checkCaptionItem[index].self_score + 1 > questionList[parentIndex].checkCaptionItem[index].score) {
+      return
     }
-    var minusStatus = 'normal';
-    item_one[index].minusStatus = minusStatus;
-    item_one[index].num = num;
-    var item = "list.item_one";
+    if (questionList[parentIndex].checkCaptionItem[index].self_score + 1 === questionList[parentIndex].checkCaptionItem[index].score) {
+      questionList[parentIndex].checkCaptionItem[index].maxStatus = 'disabled'
+    }
+    questionList[parentIndex].checkCaptionItem[index].self_score += 1
+    questionList[parentIndex].checkCaptionItem[index].minusStatus = 'normal'
     that.setData({
-      [item] : item_one
+      questionList,
     })
   },
 
@@ -245,7 +262,8 @@ Page({
 
   // 加
   add2: function (e) {
-    var that = this;
+    const that = this;
+    console.log(e)
     var index = e.currentTarget.dataset.index;
     let item_two = that.data.list.item_two;
     var item = "list.item_two";
@@ -269,6 +287,28 @@ Page({
   },
 
   formSubmit: function (e) {
-    console.log(e)
+    let openid = wx.getStorageSync('openid')
+    let originData = this.data.questionList
+    let postData = {};
+    let arrData = []
+    for (let index in originData) {
+      for (let idx in originData[index].checkCaptionItem) {
+        let localData = {}
+        localData.id = originData[index].checkCaptionItem[idx].id
+        localData.score = originData[index].checkCaptionItem[idx].self_score
+        localData.name = originData[index].checkCaptionItem[idx].name
+        arrData.push(localData)
+      }
+    }
+    postData.check_id = this.data.checkTitle.id
+    postData.openid = openid
+    postData.item = arrData
+    http.POST('check/addSelf', postData, 2).then(res => {
+      if (res.code === 1) {
+        tips('提交成功')
+      } else {
+        tips(res.msg)
+      }
+    })
   }
 })

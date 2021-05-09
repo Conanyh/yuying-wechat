@@ -39,11 +39,11 @@ Page({
   },
 
   initPageData(id) {
+    let openid = wx.getStorageSync('openid')
     if (!id || typeof id === "undefined") {
       tips('数据不存在')
     }
-    http.GET('assessment/view', {id}).then(res => {
-      console.log(res)
+    http.GET('assessment/getStaffRecord', {id, openid}).then(res => {
       this.setData({
         assessment: res.data.assessment,
         questionInfo: res.data.questionInfo,

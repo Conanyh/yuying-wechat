@@ -1,8 +1,9 @@
 
-const apiUrl = 'http://check.dhydwh.top/api/';
+// const apiUrl = 'https://check.dhydwh.top/api/';
+const apiUrl = 'http://check.lo/api/';
 
 export const http = {
-  POST: (url, params) => {
+  POST: (url, params, type = 1) => {
     return new Promise(function (resolve, reject) {
       wx.showLoading({
         title: "正在加载中...",
@@ -11,7 +12,7 @@ export const http = {
         url: apiUrl + url,
         data: params,
         header: {
-          'content-type': 'application/x-www-form-urlencoded', // 默认值
+          'content-type': type === 1 ? 'application/x-www-form-urlencoded' : 'application/json', // 默认值
         },
         method: 'POST',
         success: (res) => {

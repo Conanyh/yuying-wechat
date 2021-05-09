@@ -8,11 +8,11 @@
       <view class="th th-line">|</view>
 			<view class="th ">岗位</view>
 		</view>
-		<block wx:for="{{list}}" wx:key="{[code]}">
+		<block wx:for="{{list}}" wx:key="index">
 			<view class="tr">
-				<view class="td">{{item.code}}</view>
-				<view class="td">{{item.text}}</view>
-				<view class="td">{{item.type}}</view>
+				<view class="td">{{item.realname}}</view>
+				<view class="td">{{item.department_name}}</view>
+				<view class="td">{{item.department_position_name}}</view>
 			</view>
       <view class="tr-line"></view>
 		</block>
