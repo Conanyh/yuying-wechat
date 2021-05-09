@@ -2,32 +2,37 @@
 <view class='container'>
 	<view class='worklength'>
 		<view class='work-itembox'>
-			<block wx:for="{{list}}" wx:key="index">
-				<view class="box">
-					<view class="content">
-						<view class="title">
-							{{item.check.name}}
-						</view>
-						<view class="time">
-							<view class="time-left">
-								<view class="time-icon">
-									<image src="/images/date@2x.png"></image>
-								</view>
-								{{item.check.created_at_text}}
+			<view wx:if="{{list.length !== 0}}">
+				<block wx:for="{{list}}" wx:key="index">
+					<view class="box">
+						<view class="content">
+							<view class="title">
+								{{item.check.name}}
 							</view>
-							<view class="time-right">
-								<view class="time-icon">
-									<image src="/images/pingjunfen@2x.png"></image>
+							<view class="time">
+								<view class="time-left">
+									<view class="time-icon">
+										<image src="/images/date@2x.png"></image>
+									</view>
+									{{item.check.created_at_text}}
 								</view>
-								平均分{{item.average_score}}分
+								<view class="time-right">
+									<view class="time-icon">
+										<image src="/images/pingjunfen@2x.png"></image>
+									</view>
+									平均分{{item.average_score}}分
+								</view>
 							</view>
-						</view>
-						<view class="btn-icon" bindtap="detail">
-							<text class="icon-text-detail">查看详情</text>
+							<view class="btn-icon" bindtap="detail">
+								<text class="icon-text-detail">查看详情</text>
+							</view>
 						</view>
 					</view>
-				</view>
-			</block>
+				</block>
+			</view>
+			<view class="empty" wx:else>
+				<image src="/images/empty.png"></image>
+			</view>
 			<!-- <view class="box">
 				<view class="content">
 					<view class="title">

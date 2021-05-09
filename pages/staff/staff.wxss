@@ -77,3 +77,15 @@ page {
   justify-content: center;
   align-items: center;
 }
+
+.empty {
+  display: flex;
+  justify-content: center;
+  margin-top: 50rpx;
+}
+
+.empty image {
+  width: 300rpx;
+  height: 300rpx;
+  opacity: 0.3;
+}

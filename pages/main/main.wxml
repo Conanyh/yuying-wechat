@@ -90,33 +90,36 @@
 
 		<view class='work-itembox'>
 			<swiper current="{{currentTab}}" class="swiper-box" duration="300" bindchange="bindChange" style="height: {{clientHeight?clientHeight+'px':'auto'}}">
-                <swiper-item>
-                    <!-- <scroll-view scroll-y="{{true}}" style="height: {{clientHeight?clientHeight+'px':'auto'}}"> -->
-                    <block wx:for="{{worklist}}" wx:key="index">
-                        <view class="box">
-                            <view class="content">
-                                <view class="title">
-                                    <view wx:if="{{item.status !== null }}" class="title-icon">
-                                        <image src="{{ item.status === 0 ? '/images/daipingfen@2x.png' : '/images/yiwanchengdefault.png'  }}"></image>
-                                    </view>
-                                    {{item.name}}
-                                </view>
-                                <view class="time">
-                                    <view class="time-icon">
-                                        <image src="/images/date@2x.png"></image>
-                                    </view>
-                                    {{item.created_at}}
-                                </view>
-                                <view class="btn-icon" data-id="{{item.id}}" catchtap="{{ item.status === null ? 'join' : 'detail' }}">
-                                    <text class="icon-text-{{item.status === null ? 'join' : 'detail' }}">{{item.status === null ? '立即参与' : '查看详情'}}</text>
-                                </view>
-                            </view>
-                        </view>
-                    </block>
-                    <!-- </scroll-view> -->
-                </swiper-item>
 				<swiper-item>
-					<!-- <scroll-view scroll-y="{{true}}" style="height: {{clientHeight?clientHeight+'px':'auto'}}"> -->
+					<view wx:if="{{worklist.length !== 0}}">
+					<block wx:for="{{worklist}}" wx:key="index">
+						<view class="box">
+							<view class="content">
+								<view class="title">
+									<view wx:if="{{item.status !== null }}" class="title-icon">
+										<image src="{{ item.status === 0 ? '/images/daipingfen@2x.png' : '/images/yiwanchengdefault.png'  }}"></image>
+									</view>
+									{{item.name}}
+								</view>
+								<view class="time">
+									<view class="time-icon">
+										<image src="/images/date@2x.png"></image>
+									</view>
+									{{item.created_at}}
+								</view>
+								<view class="btn-icon" data-id="{{item.id}}" catchtap="{{ item.status === null ? 'join' : 'detail' }}">
+									<text class="icon-text-{{item.status === null ? 'join' : 'detail' }}">{{item.status === null ? '立即参与' : '查看详情'}}</text>
+								</view>
+							</view>
+						</view>
+					</block>
+					</view>
+					<view class="empty" wx:else>
+						<image src="/images/empty.png"></image>
+					</view>
+				</swiper-item>
+				<swiper-item>
+					<view wx:if="{{worklist.length !== 0}}">
 					<block wx:for="{{worklist}}" wx:key="index">
 						<view class="box">
 							<view class="content">
@@ -138,7 +141,10 @@
 							</view>
 						</view>
 					</block>
-					<!-- </scroll-view> -->
+					</view>
+					<view class="empty" wx:else>
+						<image src="/images/empty.png"></image>
+					</view>
 				</swiper-item>
 			</swiper>
 		</view>

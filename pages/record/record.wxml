@@ -11,97 +11,107 @@
 
 		<view class='work-itembox'>
 			<swiper current="{{currentTab}}" class="swiper-box" duration="300" bindchange="bindChange" style="height: {{clientHeight?clientHeight+'px':'auto'}}">
-				<swiper-item >
-					<view wx:for="{{checkList}}" wx:key="index" class="box">
-						<view class="content">
-							<view class="title">
-								<view class="title-icon">
-									<image src="/images/yiwanchengdefault@2x.png"></image>
+				<swiper-item>
+					<view wx:if="{{checkList.length !== 0}}">
+						<view wx:for="{{checkList}}" wx:key="index" class="box">
+							<view class="content">
+								<view class="title">
+									<view class="title-icon">
+										<image src="/images/yiwanchengdefault@2x.png"></image>
+									</view>
+									{{ item.check.name }}
 								</view>
-								{{ item.check.name }}
-							</view>
-							<view class="box-line"></view>
-							<view class="time">
-								<view class="time-content">
-									<view class="time-left">
-										<view class="time-icon">
-											<image src="/images/name@2x.png"></image>
+								<view class="box-line"></view>
+								<view class="time">
+									<view class="time-content">
+										<view class="time-left">
+											<view class="time-icon">
+												<image src="/images/name@2x.png"></image>
+											</view>
+											{{ item.user.realname }}
 										</view>
-										{{ item.user.realname }}
+										<view class="time-right">
+											<view class="time-icon">
+												<image src="/images/date@2x.png"></image>
+											</view>
+											{{ item.created_at_text  }}
+										</view>
 									</view>
-									<view class="time-right">
-										<view class="time-icon">
-											<image src="/images/date@2x.png"></image>
+									<view class="time-content">
+										<view class="time-left">
+											<view class="time-icon">
+												<image src="/images/bumen@2x.png"></image>
+											</view>
+											{{ item.user.department_name }}
 										</view>
-                                        {{ item.created_at_text  }}
+										<view class="time-right">
+											<view class="time-icon">
+												<image src="/images/zhiwei@2x.png"></image>
+											</view>
+											{{ item.user.department_position_name }}
+										</view>
 									</view>
 								</view>
-								<view class="time-content">
-									<view class="time-left">
-										<view class="time-icon">
-											<image src="/images/bumen@2x.png"></image>
-										</view>
-                                        {{ item.user.department_name }}
-									</view>
-									<view class="time-right">
-										<view class="time-icon">
-											<image src="/images/zhiwei@2x.png"></image>
-										</view>
-                                        {{ item.user.department_position_name }}
-									</view>
+								<view class="btn-icon" catchtap="detail" data-id="{{ item.id }}">
+									<text class="icon-text-detail">查看详情</text>
 								</view>
-							</view>
-							<view class="btn-icon" catchtap="detail" data-id="{{ item.id }}">
-								<text class="icon-text-detail">查看详情</text>
 							</view>
 						</view>
 					</view>
+					<view class="empty" wx:else>
+						<image src="/images/empty.png"></image>
+					</view>
 				</swiper-item>
 				<swiper-item>
-					<view wx:for="{{checkList}}" wx:key="index" class="box">
-						<view class="content">
-							<view class="title">
-								<view class="title-icon">
-									<image src="/images/daipingfen@2x.png"></image>
+					<view wx:if="{{checkList.length !== 0}}">
+						<view wx:for="{{checkList}}" wx:key="index" class="box">
+							<view class="content">
+								<view class="title">
+									<view class="title-icon">
+										<image src="/images/daipingfen@2x.png"></image>
+									</view>
+									{{ item.check.name }}
 								</view>
-                                {{ item.check.name }}
-                            </view>
-							<view class="time">
-								<view class="time-content">
-									<view class="time-left">
-										<view class="time-icon">
-											<image src="/images/name@2x.png"></image>
-										</view>
-                                        {{ item.user.realname }}
+								<view class="time">
+									<view class="time-content">
+										<view class="time-left">
+											<view class="time-icon">
+												<image src="/images/name@2x.png"></image>
+											</view>
+											{{ item.user.realname }}
 
-                                    </view>
-									<view class="time-right">
-										<view class="time-icon">
-											<image src="/images/date@2x.png"></image>
 										</view>
-                                        {{ item.created_at_text  }}
-                                    </view>
-								</view>
-								<view class="time-content">
-									<view class="time-left">
-										<view class="time-icon">
-											<image src="/images/bumen@2x.png"></image>
+										<view class="time-right">
+											<view class="time-icon">
+												<image src="/images/date@2x.png"></image>
+											</view>
+											{{ item.created_at_text  }}
 										</view>
-                                        {{ item.user.department_name }}
+									</view>
+									<view class="time-content">
+										<view class="time-left">
+											<view class="time-icon">
+												<image src="/images/bumen@2x.png"></image>
+											</view>
+											{{ item.user.department_name }}
 
-                                    </view>
-									<view class="time-right">
-										<view class="time-icon">
-											<image src="/images/zhiwei@2x.png"></image>
 										</view>
-                                        {{ item.user.department_position_name }}
-                                    </view>
+										<view class="time-right">
+											<view class="time-icon">
+												<image src="/images/zhiwei@2x.png"></image>
+											</view>
+											{{ item.user.department_position_name }}
+										</view>
+									</view>
 								</view>
-							</view>
-							<view class="btn-icon" catchtap="comment" data-id="{{item.id}}">
-								<text class="icon-text-join">去点评</text>
+								<view class="btn-icon" catchtap="comment" data-id="{{item.id}}">
+									<text class="icon-text-join">去点评</text>
+								</view>
 							</view>
 						</view>
+					</view>
+					<view class="empty" wx:else>
+						<image src="/images/empty.png"></image>
 					</view>
 				</swiper-item>
 			</swiper>

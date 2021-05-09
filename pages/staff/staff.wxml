@@ -3,18 +3,23 @@
 	<view class="table">
 		<view class="tr bg-w">
 			<view class="th">姓名</view>
-      <view class="th th-line">|</view>
+			<view class="th th-line">|</view>
 			<view class="th">项目(部门)</view>
-      <view class="th th-line">|</view>
+			<view class="th th-line">|</view>
 			<view class="th ">岗位</view>
 		</view>
-		<block wx:for="{{list}}" wx:key="index">
-			<view class="tr">
-				<view class="td">{{item.realname}}</view>
-				<view class="td">{{item.department_name}}</view>
-				<view class="td">{{item.department_position_name}}</view>
-			</view>
-      <view class="tr-line"></view>
-		</block>
+		<view wx:if="{{list.length !== 0}}">
+			<block wx:for="{{list}}" wx:key="index">
+				<view class="tr">
+					<view class="td">{{item.realname}}</view>
+					<view class="td">{{item.department_name}}</view>
+					<view class="td">{{item.department_position_name}}</view>
+				</view>
+				<view class="tr-line"></view>
+			</block>
+		</view>
+		<view class="empty" wx:else>
+			<image src="/images/empty.png"></image>
+		</view>
 	</view>
 </view>

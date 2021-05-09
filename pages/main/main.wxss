@@ -149,3 +149,15 @@ page {
   padding: 4rpx 16rpx;
   border-radius: 10rpx;
 }
+
+.empty {
+  display: flex;
+  justify-content: center;
+  margin-top: 50rpx;
+}
+
+.empty image {
+  width: 300rpx;
+  height: 300rpx;
+  opacity: 0.3;
+}
