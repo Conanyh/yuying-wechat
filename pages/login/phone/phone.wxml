@@ -1,6 +1,6 @@
 <!--pages/login/phone/phone.wxml-->
 <view class="container">
-  <image class="avs" src="/images/delete@3x.png"></image>
+  <image class="avs" src="/images/logo.png"></image>
   <view class="moto-container">
     <text class="moto">菁英绩效</text>
   </view>
