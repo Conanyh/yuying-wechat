@@ -1,7 +1,7 @@
 <!--pages/login/login.wxml-->
 <view class="container">
-  <image class="avs" src="/images/delete@3x.png"></image>
-  <view class="moto-container">
+  <image class="avs" src="/images/logo.png"></image>
+  <view class="moto-container" bindgetuserinfo="bindGetUserInfo">
     <view class="icon">
       <image src="/images/wechat.png"></image>
     </view>
