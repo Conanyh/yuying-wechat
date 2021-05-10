@@ -17,4 +17,12 @@ export function pageTo(page, isTabbar = false) {
     })
   }
 }
+export function tipAndBack (content = '提示', delta = 1)  {
+  tips(content)
+  setTimeout(function () {
+    wx.navigateBack({
+      delta: delta
+    })
+  }, 2000)
+}
 

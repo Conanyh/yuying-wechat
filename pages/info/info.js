@@ -1,5 +1,7 @@
 // pages/info/info.js
 import WxValidate from '../../utils/WxValidate.js'
+import { http } from "../../utils/request";
+import { tipAndBack } from "../../utils/common";
 const app = getApp()
 Page({
 
@@ -209,42 +211,49 @@ Page({
     var gender = e.detail.value.gender == '男' ? '1' : '0';
     var department_id = that.data.department[that.data.department_index].id;
     var department_position_id = that.data.post[that.data.post_index].id;
-
-    wx.request({
-      url: app.globalData.host + '/user/update',
-      data: {
-        openid: openid,
-        realname: realname,
-        age: age,
-        mobile: mobile,
-        gender: gender,
-        department_id: department_id,
-        department_position_id: department_position_id
-      },
-      method: 'POST',
-      header: {
-        "Content-type": 'application/x-www-form-urlencoded'
-      },
-      success: function (res) {
-        console.log(res)
-        if (res.data.code) {
-          wx.showToast({
-            title: res.data.msg,
-            icon: 'none'
-          })
-          setTimeout(function() {
-            wx.switchTab({
-              url: '/pages/mine/mine',
-            })
-          }, 2000)
-        }
+    http.POST('user/update', {
+      openid, realname, age,mobile,gender,department_id,department_position_id
+    }).then(res => {
+      if (res.code === 1) {
+        tipAndBack('修改成功')
       }
     })
 
-    return false;
-    this.showToast({
-      msg: '提交成功'
-    })
+    // wx.request({
+    //   url: app.globalData.host + '/user/update',
+    //   data: {
+    //     openid: openid,
+    //     realname: realname,
+    //     age: age,
+    //     mobile: mobile,
+    //     gender: gender,
+    //     department_id: department_id,
+    //     department_position_id: department_position_id
+    //   },
+    //   method: 'POST',
+    //   header: {
+    //     "Content-type": 'application/x-www-form-urlencoded'
+    //   },
+    //   success: function (res) {
+    //     console.log(res)
+    //     if (res.data.code) {
+    //       wx.showToast({
+    //         title: res.data.msg,
+    //         icon: 'none'
+    //       })
+    //       setTimeout(function() {
+    //         wx.switchTab({
+    //           url: '/pages/mine/mine',
+    //         })
+    //       }, 2000)
+    //     }
+    //   }
+    // })
+    //
+    // return false;
+    // this.showToast({
+    //   msg: '提交成功'
+    // })
   },
 
   // 部门信息

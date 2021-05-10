@@ -73,12 +73,13 @@ Page({
    */
   goToInfo: function () {
     var that = this;
-    var name = that.data.userInfo.realname;
-    var phone = that.data.userInfo.mobile;
-    var gender = that.data.userInfo.gender;
-    var age = that.data.userInfo.age;
-    var department_name = that.data.userInfo.department.name;
-    var post_name = that.data.userInfo.departmentposition.name;
+    let userInfo = that.data.userInfo
+    var name = userInfo ? userInfo.realname : '';
+    var phone = userInfo ? userInfo.mobile : '';
+    var gender = userInfo ? userInfo.gender  : '';
+    var age = userInfo ? userInfo.age : '';
+    var department_name = userInfo ? userInfo.department.name : '';
+    var post_name = userInfo ? userInfo.departmentposition.name : '';
     wx.navigateTo({
       url: '/pages/info/info?name='+name+'&phone='+phone+'&gender='+gender+'&age='+age+'&department_name='+department_name+'&post_name='+post_name,
     })
