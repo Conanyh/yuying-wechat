@@ -27,7 +27,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     var that = this;
     wx.getSystemInfo({
       success: (result) => {
@@ -39,12 +39,12 @@ Page({
 
 
     wx.getUserInfo({
-      success: function (res) {
+      success: function(res) {
         var avatarUrl = 'user.avatarUrl';
         var nickName = 'user.nickName';
         that.setData({
-            [avatarUrl]: res.userInfo.avatarUrl,
-            [nickName]:res.userInfo.nickName,
+          [avatarUrl]: res.userInfo.avatarUrl,
+          [nickName]: res.userInfo.nickName,
         })
       }
     })
@@ -55,14 +55,14 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
     var that = this;
 
     that.getUserInfo();
@@ -71,24 +71,24 @@ Page({
   /**
    * 跳转个人资料
    */
-  goToInfo: function () {
+  goToInfo: function() {
     var that = this;
     let userInfo = that.data.userInfo
     var name = userInfo ? userInfo.realname : '';
     var phone = userInfo ? userInfo.mobile : '';
-    var gender = userInfo ? userInfo.gender  : '';
+    var gender = userInfo ? userInfo.gender : '';
     var age = userInfo ? userInfo.age : '';
     var department_name = userInfo ? userInfo.department.name : '';
     var post_name = userInfo ? userInfo.departmentposition.name : '';
     wx.navigateTo({
-      url: '/pages/info/info?name='+name+'&phone='+phone+'&gender='+gender+'&age='+age+'&department_name='+department_name+'&post_name='+post_name,
+      url: '/pages/info/info?name=' + name + '&phone=' + phone + '&gender=' + gender + '&age=' + age + '&department_name=' + department_name + '&post_name=' + post_name,
     })
   },
 
   /**
    * 跳转我的综合评分
    */
-  goToScore: function () {
+  goToScore: function() {
     wx.navigateTo({
       url: '/pages/score/score',
     })
@@ -97,7 +97,7 @@ Page({
   /**
    * 跳转部门员工列表
    */
-  goToStaff: function () {
+  goToStaff: function() {
     wx.navigateTo({
       url: '/pages/staff/staff',
     })
@@ -106,24 +106,25 @@ Page({
   /**
    * 员工考核记录
    */
-  goToRecord: function () {
+  goToRecord: function() {
     wx.navigateTo({
       url: '/pages/record/record',
     })
   },
 
   // 获取用户信息
-  getUserInfo: function () {
+  getUserInfo: function() {
     let openid = wx.getStorageSync('openid')
     if (openid) {
       http.GET('user/getUserInfo', {openid}).then(res => {
+        if (!res.data) {
+          tips('请完善个人信息');
+          return
+        }
         wx.setStorageSync('userInfo', res.data)
         this.setData({
           userInfo: res.data
         })
-        if (!res.data) {
-          tips('请完善个人信息');
-        }
       })
     } else {
       pageTo('/pages/login/login')

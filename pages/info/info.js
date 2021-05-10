@@ -2,6 +2,7 @@
 import WxValidate from '../../utils/WxValidate.js'
 import { http } from "../../utils/request";
 import { tipAndBack } from "../../utils/common";
+
 const app = getApp()
 Page({
 
@@ -21,7 +22,7 @@ Page({
     department_id: '',
     department_name: '',
     post_index: 0,
-    post: [],
+    post: ['请先选择部门'],
     post_id: '',
     post_name: ''
   },
@@ -29,7 +30,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
 
     console.log(options)
     var that = this;
@@ -45,42 +46,41 @@ Page({
     that.initValidate(); // 表单验证
 
     that.getDepartment(); // 获取部门
-    that.getPost(); // 获取职务
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
-  bindPickerChange: function (e) {
+  bindPickerChange: function(e) {
     console.log('picker发生选择改变', e)
   },
 
-  bindPickerChangeSex: function (e) {
+  bindPickerChangeSex: function(e) {
     var that = this;
     console.log(e);
     that.setData({
@@ -88,7 +88,7 @@ Page({
     })
   },
 
-  bindPickerChangeAge: function (e) {
+  bindPickerChangeAge: function(e) {
     var that = this;
     that.setData({
       age: e.detail.value,
@@ -96,16 +96,25 @@ Page({
     })
   },
 
-  bindPickerChangeDepartment: function (e) {
-    console.log(e.detail.value)
-    var that = this;
+  bindPickerChangeDepartment: function(e) {
+    console.log(e)
+    const that = this;
+    let id = e.detail.value
+    console.log(id)
+    http.GET('department/getPosition', {id}).then(res => {
+      that.setData({
+        post: res.data,
+        post_name: res.data[0].name,
+        post_id: res.data[0].id,
+      })
+    })
     that.setData({
       department_index: e.detail.value,
       department_name: that.data.department[e.detail.value].name
     })
   },
 
-  bindPickerChangePost: function (e) {
+  bindPickerChangePost: function(e) {
     console.log(e)
     var that = this;
     that.setData({
@@ -115,7 +124,7 @@ Page({
   },
 
   // 清除对应输入框
-  clearInput: function (e) {
+  clearInput: function(e) {
     console.log(e)
     var that = this;
     var tip = e.currentTarget.dataset.tip;
@@ -158,53 +167,31 @@ Page({
         required: true,
         tel: true
       },
-      // department: {
-      //   required: true,
-      //   minlength: 2
-      // },
-      // post: {
-      //   required: true,
-      //   minlength: 2
-      // }
     }
     const messages = {
       name: {
         required: '请填写姓名',
-        minlength:'请输入正确的名称'
+        minlength: '请输入正确的名称'
       },
       phone: {
-        required:'请填写手机号',
-        tel:'请填写正确的手机号'
+        required: '请填写手机号',
+        tel: '请填写正确的手机号'
       },
-      // department: {
-      //   required:'请填写部门',
-      //   minlength:'请填写正确的部门'
-      // },
-      // post: {
-      //   required:'请填写部门',
-      //   minlength:'请填写正确的部门'
-      // }
     }
     this.WxValidate = new WxValidate(rules, messages)
   },
 
   // 表单提交
-  formSubmit: function (e) {
+  formSubmit: function(e) {
     var that = this;
-    console.log(that.data.post_index) // 职务数组index
-    console.log(that.data.post[that.data.post_index].id)  // 职务id
-    console.log('form发生了submit事件，携带的数据为：', e.detail.value)
     const params = e.detail.value
-
     if (!this.WxValidate.checkForm(params)) {
       const error = this.WxValidate.errorList[0]
       this.showToast(error)
       return false
     }
-
     // 提交表单接口逻辑
     var openid = wx.getStorageSync('openid');
-    console.log(openid);
     var realname = e.detail.value.name;
     var age = e.detail.value.age
     var mobile = e.detail.value.phone;
@@ -212,60 +199,24 @@ Page({
     var department_id = that.data.department[that.data.department_index].id;
     var department_position_id = that.data.post[that.data.post_index].id;
     http.POST('user/update', {
-      openid, realname, age,mobile,gender,department_id,department_position_id
+      openid, realname, age, mobile, gender, department_id, department_position_id
     }).then(res => {
       if (res.code === 1) {
         tipAndBack('修改成功')
       }
     })
-
-    // wx.request({
-    //   url: app.globalData.host + '/user/update',
-    //   data: {
-    //     openid: openid,
-    //     realname: realname,
-    //     age: age,
-    //     mobile: mobile,
-    //     gender: gender,
-    //     department_id: department_id,
-    //     department_position_id: department_position_id
-    //   },
-    //   method: 'POST',
-    //   header: {
-    //     "Content-type": 'application/x-www-form-urlencoded'
-    //   },
-    //   success: function (res) {
-    //     console.log(res)
-    //     if (res.data.code) {
-    //       wx.showToast({
-    //         title: res.data.msg,
-    //         icon: 'none'
-    //       })
-    //       setTimeout(function() {
-    //         wx.switchTab({
-    //           url: '/pages/mine/mine',
-    //         })
-    //       }, 2000)
-    //     }
-    //   }
-    // })
-    //
-    // return false;
-    // this.showToast({
-    //   msg: '提交成功'
-    // })
   },
 
   // 部门信息
-  getDepartment: function () {
+  getDepartment: function() {
     var that = this;
     wx.request({
-      url: app.globalData.host +  '/department/getDepartment',
+      url: app.globalData.host + '/department/getDepartment',
       method: 'GET',
       header: {
         "Content-type": "application/json"
       },
-      success: function (res) {
+      success: function(res) {
         console.log(res.data.data)
         that.setData({
           department: res.data.data
@@ -274,27 +225,5 @@ Page({
       }
     })
   },
-
-  // 职务信息
-  getPost: function () {
-    var that = this;
-    wx.request({
-      url: app.globalData.host +  '/department/getPosition',
-      data: {
-        id: 1
-      },
-      method: 'GET',
-      header: {
-        "Content-type": "application/json"
-      },
-      success: function (res) {
-        console.log(res.data.data)
-        that.setData({
-          post: res.data.data
-        })
-
-      }
-    })
-  }
 
 })
