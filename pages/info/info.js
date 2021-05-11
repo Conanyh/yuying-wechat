@@ -10,7 +10,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    sex: ['男', '女'],
+    sex: ['女','男'],
     gender: 0,
     ageArr: ['20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '35', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50'],
     age: 0,
@@ -41,6 +41,7 @@ Page({
       age_name: options.age,
       department_name: options.department_name,
       post_name: options.post_name,
+      gender: options.gender
     })
 
     that.initValidate(); // 表单验证
@@ -50,7 +51,6 @@ Page({
     if (userInfo) {
       this.getDepartmentPosition(userInfo.department_id)
     }
-    console.log(userInfo)
   },
 
   getDepartmentPosition(id){
