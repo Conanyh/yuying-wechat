@@ -23,7 +23,7 @@
 									平均分{{item.average_score}}分
 								</view>
 							</view>
-							<view class="btn-icon" bindtap="detail">
+							<view class="btn-icon" data-id="{{item.check_id}}" bindtap="detail">
 								<text class="icon-text-detail">查看详情</text>
 							</view>
 						</view>

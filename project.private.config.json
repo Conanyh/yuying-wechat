@@ -41,6 +41,11 @@
           "pathName": "pages/comment/comment",
           "query": "id=9",
           "scene": null
+        },
+        {
+          "name": "pages/score/score",
+          "pathName": "pages/score/score",
+          "scene": null
         }
       ]
     }
