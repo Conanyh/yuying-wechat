@@ -72,7 +72,7 @@
                             </view>
                         </view>
                         <view class="time-content">
-                            <view class="time-left" style="width: 80%;">
+                            <view class="time-left" >
                                 <view class="time-icon">
                                     <text class="time-icon-font">自评：</text>
                                 </view>
@@ -91,7 +91,7 @@
             </block>
         </view>
     </block>
-	<view class="textarea">
+	<view wx:if="{{assessment.status === 10}}" class="textarea">
 		<textarea auto-height>{{assessment.comment === '0' ? '' : assessment.comment }}</textarea>
 	</view>
 

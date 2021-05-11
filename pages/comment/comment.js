@@ -1,6 +1,6 @@
 // pages/comment/comment.js
 import { http } from "../../utils/request";
-import { tips } from "../../utils/common";
+import { tipAndBack, tips } from "../../utils/common";
 
 const app = getApp()
 Page({
@@ -127,7 +127,7 @@ Page({
     console.log(postData)
     http.POST('assessment/addLeader', postData, 2).then(res => {
       if (res.code === 1) {
-        tips('提交成功')
+        tipAndBack('点评成功')
       } else {
         tips(res.msg)
       }

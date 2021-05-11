@@ -48,8 +48,9 @@
             <text class="score"> ({{item.score}}分)</text>
         </view>
 
+            <block wx:for="{{item.checkCaptionItem}}" wx:for-item="cpItem" wx:key="cpIdx" wx:for-index="idx">
+
             <view class="content">
-                <block wx:for="{{item.checkCaptionItem}}" wx:for-item="cpItem" wx:key="cpIdx" wx:for-index="idx">
                     <view class="single">
                         <view class="time">
                             <view class="time-content">
@@ -84,9 +85,10 @@
                             </view>
                         </view>
                     </view>
-                </block>
             </view>
         </block>
+
+    </block>
 
 		<view class="bottom">
 			<button class="save-btn" form-type="submit">提交考核</button>

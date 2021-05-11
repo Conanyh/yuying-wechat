@@ -2,10 +2,13 @@
 <view class="container">
   <image class="avs" src="/images/logo.png"></image>
   <view class="moto-container" bindgetuserinfo="bindGetUserInfo">
-    <view class="icon">
-      <image src="/images/wechat.png"></image>
-    </view>
-     <button class="btn" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" style="margin:0; padding:0;width:auto;">微信用户一键登录</button>
+
+     <button class="btn login-btn" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" >
+         <view class="icon">
+             <image src="/images/wechat.png"></image>
+         </view>
+         微信用户一键登录
+     </button>
     <!-- <text class="moto">微信用户一键登录</text> -->
   </view>
   <view class="tip">
