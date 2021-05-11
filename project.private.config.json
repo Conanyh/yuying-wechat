@@ -45,6 +45,13 @@
         {
           "name": "pages/score/score",
           "pathName": "pages/score/score",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/detail/detail",
+          "pathName": "pages/detail/detail",
+          "query": "id=2",
           "scene": null
         }
       ]

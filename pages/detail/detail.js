@@ -53,6 +53,10 @@ Page({
   initPageData(id){
     let openid = wx.getStorageSync('openid')
     http.GET('assessment/view', {id, openid}).then(res => {
+      if (res.code === 0) {
+        tips(res.msg)
+        return
+      }
       this.setData({
         assessment: res.data.assessment,
         questionInfo: res.data.questionInfo,
