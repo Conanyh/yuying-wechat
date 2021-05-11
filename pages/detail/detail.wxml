@@ -91,8 +91,12 @@
             </block>
         </view>
     </block>
+    <view wx:if="{{assessment.status === 10}}" class="tip">
+        <image src="/images/line@2x.png"></image>
+        <text class="font">领导评语 </text>
+    </view>
 	<view wx:if="{{assessment.status === 10}}" class="textarea">
-		<textarea auto-height>{{assessment.comment === '0' ? '' : assessment.comment }}</textarea>
+		<textarea disabled readonly="readonly" auto-height>{{assessment.comment === '0' ? '' : assessment.comment }}</textarea>
 	</view>
 
 </view>
