@@ -35,12 +35,6 @@ Page({
    */
   onLoad: function (options) {
     const that = this;
-    if (!options.id || typeof options.id === 'undefined') {
-      tips('资源不存在')
-      return
-    }
-
-    that.initPageData(options.id)
     wx.getSystemInfo({
       success: (result) => {
         that.setData({
@@ -48,6 +42,12 @@ Page({
         })
       },
     })
+    if (!options.id || typeof options.id === 'undefined') {
+      tips('资源不存在')
+      return
+    }
+    that.initPageData(options.id)
+
   },
 
   initPageData(id){
