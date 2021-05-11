@@ -1,7 +1,7 @@
 // pages/info/info.js
 import WxValidate from '../../utils/WxValidate.js'
 import { http } from "../../utils/request";
-import { tipAndBack } from "../../utils/common";
+import { tipAndBack, tips } from "../../utils/common";
 
 const app = getApp()
 Page({
@@ -46,6 +46,19 @@ Page({
     that.initValidate(); // 表单验证
 
     that.getDepartment(); // 获取部门
+    let userInfo = wx.getStorageSync('userInfo')
+    if (userInfo) {
+      this.getDepartmentPosition(userInfo.department_id)
+    }
+    console.log(userInfo)
+  },
+
+  getDepartmentPosition(id){
+    http.GET('department/getPosition', {id}).then(res => {
+      this.setData({
+        post: res.data,
+      })
+    })
   },
 
   /**
@@ -96,21 +109,28 @@ Page({
     })
   },
 
+
   bindPickerChangeDepartment: function(e) {
-    console.log(e)
     const that = this;
     let id = e.detail.value
     console.log(id)
     http.GET('department/getPosition', {id}).then(res => {
-      that.setData({
-        post: res.data,
-        post_name: res.data[0].name,
-        post_id: res.data[0].id,
-      })
+      if (res.code === 1 && res.data.length > 0) {
+        that.setData({
+          post: res.data,
+          post_name: res.data[0].name,
+          post_id: res.data[0].id,
+        })
+      } else {
+        this.setData({
+          post: [{id: '', name: '请选择'}]
+        })
+      }
+
     })
     that.setData({
-      department_index: e.detail.value,
-      department_name: that.data.department[e.detail.value].name
+      department_index: e.detail.value || 0,
+      department_name: that.data.department[e.detail.value].name || ''
     })
   },
 
@@ -203,6 +223,8 @@ Page({
     }).then(res => {
       if (res.code === 1) {
         tipAndBack('修改成功')
+      } else {
+        tips('更新失败')
       }
     })
   },
@@ -217,7 +239,6 @@ Page({
         "Content-type": "application/json"
       },
       success: function(res) {
-        console.log(res.data.data)
         that.setData({
           department: res.data.data
         })

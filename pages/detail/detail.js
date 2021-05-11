@@ -47,7 +47,6 @@ Page({
       return
     }
     that.initPageData(options.id)
-
   },
 
   initPageData(id){
