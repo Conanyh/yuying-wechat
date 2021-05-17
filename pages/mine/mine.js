@@ -80,8 +80,10 @@ Page({
     var age = userInfo ? userInfo.age : '';
     var department_name = userInfo ? userInfo.department.name : '';
     var post_name = userInfo ? userInfo.departmentposition.name : '';
+    var department_name_id = userInfo ? userInfo.department_id : '';
+    var post_name_id = userInfo ? userInfo.department_position_id : '';
     wx.navigateTo({
-      url: '/pages/info/info?name=' + name + '&phone=' + phone + '&gender=' + gender + '&age=' + age + '&department_name=' + department_name + '&post_name=' + post_name,
+      url: '/pages/info/info?name=' + name + '&phone=' + phone + '&gender=' + gender + '&age=' + age + '&department_name=' + department_name + '&post_name=' + post_name + '&department_name_id=' + department_name_id + '&post_name_id=' + post_name_id,
     })
   },
 

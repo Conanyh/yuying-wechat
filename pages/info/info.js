@@ -21,10 +21,12 @@ Page({
     department: [],
     department_id: '',
     department_name: '',
+    department_name_id: '',
     post_index: 0,
     post: ['请先选择部门'],
     post_id: '',
-    post_name: ''
+    post_name: '',
+    post_name_id : ''
   },
 
   /**
@@ -41,7 +43,9 @@ Page({
       age_name: options.age,
       department_name: options.department_name,
       post_name: options.post_name,
-      gender: options.gender
+      gender: options.gender,
+      department_name_id: options.department_name_id,
+      post_name_id: options.post_name_id
     })
 
     that.initValidate(); // 表单验证
@@ -49,12 +53,14 @@ Page({
     that.getDepartment(); // 获取部门
     let userInfo = wx.getStorageSync('userInfo')
     if (userInfo) {
+      console.log(userInfo.department_id);
       this.getDepartmentPosition(userInfo.department_id)
     }
   },
 
   getDepartmentPosition(id){
     http.GET('department/getPosition', {id}).then(res => {
+      console.log(res)
       this.setData({
         post: res.data,
       })
@@ -113,33 +119,44 @@ Page({
   bindPickerChangeDepartment: function(e) {
     const that = this;
     let id = e.detail.value
+    console.log(e);
     console.log(id)
     http.GET('department/getPosition', {id}).then(res => {
       if (res.code === 1 && res.data.length > 0) {
+        console.log(res.data);
+        console.log(res.data[0].id)
         that.setData({
           post: res.data,
           post_name: res.data[0].name,
           post_id: res.data[0].id,
+          post_name_id: res.data[0].id
         })
       } else {
         this.setData({
-          post: [{id: '', name: '请选择'}]
+          post: [{id: '', name: '请选择'}],
+          post_name: '请选择',
+          post_name_id: ''
         })
       }
 
     })
+    var department_name_id = that.data.department[e.detail.value].id;
+    console.log(department_name_id)
     that.setData({
       department_index: e.detail.value || 0,
-      department_name: that.data.department[e.detail.value].name || ''
+      department_name: that.data.department[e.detail.value].name || '',
+      department_name_id: department_name_id || 0,
     })
   },
 
   bindPickerChangePost: function(e) {
     console.log(e)
     var that = this;
+    console.log(that.data.post[e.detail.value]);
     that.setData({
       post_index: e.detail.value,
-      post_name: that.data.post[e.detail.value].name
+      post_name: that.data.post[e.detail.value].name,
+      post_name_id: that.data.post[e.detail.value].id
     })
   },
 
@@ -216,8 +233,8 @@ Page({
     var age = e.detail.value.age
     var mobile = e.detail.value.phone;
     var gender = e.detail.value.gender == '男' ? '1' : '0';
-    var department_id = that.data.department[that.data.department_index].id;
-    var department_position_id = that.data.post[that.data.post_index].id;
+    var department_id = that.data.department_name_id;
+    var department_position_id = that.data.post_name_id;
     http.POST('user/update', {
       openid, realname, age, mobile, gender, department_id, department_position_id
     }).then(res => {
@@ -245,6 +262,6 @@ Page({
 
       }
     })
-  },
+  }
 
 })
