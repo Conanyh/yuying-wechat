@@ -20,25 +20,25 @@
 	<view class="icons">
 		<view class="content">
 			<view class="libin">
-				<view class="item" bindtap="goToScore">
+				<view class="item" catchtap="goToScore">
 					<view class="img">
 						<image src="/images/zonghepingfen@3x.png"></image>
 					</view>
 					<text>我的综合评分</text>
 				</view>
-				<view class="item" bindtap="goToInfo">
+				<view class="item" catchtap="goToInfo">
 					<view class="img">
 						<image src="/images/gerenziliao@3x.png"></image>
 					</view>
 					<text>个人资料</text>
 				</view>
-				<view class="item" bindtap="goToStaff" wx:if="{{userInfo.switch}}">
+				<view class="item" catchtap="goToStaff" wx:if="{{userInfo.switch}}">
 					<view class="img">
 						<image src="/images/yuangongliebiao@3x.png"></image>
 					</view>
 					<text>部门员工列表</text>
 				</view>
-				<view class="item" bindtap="goToRecord" wx:if="{{userInfo.switch}}">
+				<view class="item" catchtap="goToRecord" wx:if="{{userInfo.switch}}">
 					<view class="img">
 						<image src="/images/kaohejilu@3x.png"></image>
 					</view>
