@@ -114,6 +114,13 @@ Page({
     })
   },
 
+  goLogin: function () {
+    let openid = wx.getStorageSync('openid')
+    if (!openid) {
+      pageTo('/pages/login/login')
+    }
+  },
+
   // 获取用户信息
   getUserInfo: function() {
     let openid = wx.getStorageSync('openid')

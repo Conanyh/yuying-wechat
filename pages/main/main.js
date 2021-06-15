@@ -15,6 +15,7 @@ Page({
     currentTab: 0,
     work: [],
     worklist: [],
+    openid: ''
   },
 
   selected: function (e) {
@@ -81,7 +82,11 @@ Page({
    */
   onShow: function () {
     this.getCheck(this.data.currentTab);
-
+    var openid = wx.getStorageSync('openid')
+    console.log(openid)
+    this.setData({
+      openid: openid
+    })
   },
 
 

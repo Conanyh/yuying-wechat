@@ -5,7 +5,7 @@
 
 	<view class="user">
 		<view class="avatar">
-			<view class="head-icon">
+			<view class="head-icon" bindtap="goLogin">
 				<open-data type="userAvatarUrl"></open-data>
 			</view>
 		</view>

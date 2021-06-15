@@ -154,10 +154,17 @@ page {
   display: flex;
   justify-content: center;
   margin-top: 50rpx;
+  flex-direction: column;
+  align-items: center;
 }
 
 .empty image {
   width: 300rpx;
   height: 300rpx;
   opacity: 0.3;
+}
+
+.empty text {
+  font-size: 36rpx;
+  color: red;
 }

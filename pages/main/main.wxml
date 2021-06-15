@@ -91,7 +91,7 @@
 		<view class='work-itembox'>
 			<swiper current="{{currentTab}}" class="swiper-box" duration="300" bindchange="bindChange" style="height: {{clientHeight?clientHeight+'px':'auto'}}">
 				<swiper-item>
-					<view wx:if="{{worklist.length !== 0}}">
+					<view wx:if="{{worklist.length !== 0 && worklist !== null}}">
 					<block wx:for="{{worklist}}" wx:key="index">
 						<view class="box">
 							<view class="content">
@@ -116,10 +116,11 @@
 					</view>
 					<view class="empty" wx:else>
 						<image src="/images/empty.png"></image>
+						<view wx:if="{{openid == ''}}"><text>请先去登录</text></view>
 					</view>
 				</swiper-item>
 				<swiper-item>
-					<view wx:if="{{worklist.length !== 0}}">
+					<view wx:if="{{worklist.length !== 0  && worklist !== null}}">
 					<block wx:for="{{worklist}}" wx:key="index">
 						<view class="box">
 							<view class="content">
@@ -144,6 +145,7 @@
 					</view>
 					<view class="empty" wx:else>
 						<image src="/images/empty.png"></image>
+						<view wx:if="{{openid == ''}}"><text>请先去登录</text></view>
 					</view>
 				</swiper-item>
 			</swiper>
